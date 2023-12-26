@@ -9,12 +9,23 @@ html {
 
 header {
     position: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     padding: 2rem 10%;
     margin: 0;
     top: 0;
+    z-index: 1000;
     height: 5rem;
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header ul .navbar {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+header li {
+    display: inline;
 }

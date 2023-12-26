@@ -9,7 +9,12 @@ html {
 
 header {
     position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 10%;
     margin: 0;
     top: 0;
     height: 5rem;
+    width: 100%;
 }

@@ -38,3 +38,7 @@ header ul .navbar {
     justify-content: center;
     align-items: center;
 }
+
+header li {
+    display: inline;
+}

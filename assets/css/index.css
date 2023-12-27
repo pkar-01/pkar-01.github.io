@@ -32,13 +32,24 @@ header {
     box-shadow: 0 1px 4px rgba(146, 161, 176, 0.3);
 }
 
-header ul .navbar {
+header .navbar ul  {
     list-style: none;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-header li {
-    display: inline;
+header .navbar ul li {
+    font-size: 2rem;
+    color: red;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.03rem;
+    transition: 0.2s;
+}
+
+header .navbar ul li a.active,
+header .navbar ul li a.hover {
+    color: blue;
+    border-botto: 0.2rem solid blue;
 }

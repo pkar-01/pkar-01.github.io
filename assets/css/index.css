@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap");
+
+
 * {
     margin: 0;
     padding: 0;
@@ -5,6 +8,11 @@
 
 html {
     scroll-behavior: smooth;
+    font-size: 60%;
+}
+
+body {
+    font-family: 'Oswald', sans-serif;
 }
 
 header {
@@ -13,7 +21,7 @@ header {
     top: 0;
     right: 0;
     left: 0;
-    z-index: 1000;
+    z-index: 100;
     height: 5rem;
     width: 100%;
     display: flex;
@@ -21,6 +29,7 @@ header {
     justify-content: space-between;
     padding: 2rem 10%;
     background-color: #fff;
+    box-shadow: 0 1px 4px rgba(146, 161, 176, 0.3);
 }
 
 header ul .navbar {

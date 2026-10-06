@@ -2,29 +2,57 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Your Name | Systems Engineer</title>
-  <meta name="description" content="Portfolio of Your Name, a Systems Engineer specialising in education technology, infrastructure, cybersecurity and IT operations.">
+  <title>TheScriptingTree | Apple Systems Engineer</title>
+
+  <meta
+    name="description"
+    content="TheScriptingTree — Apple Systems Engineer specialising in Jamf, Apple platforms, automation, scripting and education technology."
+  >
+
+  <meta name="theme-color" content="#080b0a">
 
   <style>
+    /* =========================================================
+       THE SCRIPTING TREE
+       Apple Systems Engineer Portfolio
+       ========================================================= */
+
     :root {
-      --bg: #070b14;
-      --bg-soft: #0d1321;
-      --card: rgba(15, 23, 42, 0.72);
-      --border: rgba(148, 163, 184, 0.14);
-      --text: #f1f5f9;
-      --muted: #94a3b8;
-      --blue: #38bdf8;
-      --purple: #818cf8;
-      --green: #34d399;
-      --glow: rgba(56, 189, 248, 0.18);
+      --background: #070a09;
+      --background-light: #0d1210;
+      --card: rgba(18, 24, 21, 0.78);
+
+      --text: #f5f7f5;
+      --muted: #9ca8a1;
+      --subtle: #66716b;
+
+      --green: #49d17d;
+      --green-light: #8ff0ae;
+      --green-dark: #1d8f4d;
+
+      --blue: #69b7ff;
+      --purple: #a78bfa;
+
+      --border: rgba(255,255,255,0.09);
+      --border-green: rgba(73,209,125,0.20);
+
+      --glow: rgba(73,209,125,0.15);
+
+      --radius: 16px;
     }
 
+
+    /* =========================================================
+       RESET
+       ========================================================= */
+
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     html {
@@ -32,15 +60,64 @@
     }
 
     body {
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system,
-        BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "SF Pro Text",
+        "Segoe UI",
+        sans-serif;
+
       background:
-        radial-gradient(circle at 15% 10%, rgba(56,189,248,.10), transparent 30%),
-        radial-gradient(circle at 85% 25%, rgba(129,140,248,.10), transparent 30%),
-        var(--bg);
+        radial-gradient(
+          circle at 15% 5%,
+          rgba(73, 209, 125, 0.10),
+          transparent 28%
+        ),
+        radial-gradient(
+          circle at 90% 20%,
+          rgba(105, 183, 255, 0.08),
+          transparent 28%
+        ),
+        var(--background);
+
       color: var(--text);
+
       line-height: 1.6;
+
       overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+
+      position: fixed;
+
+      inset: 0;
+
+      pointer-events: none;
+
+      opacity: 0.025;
+
+      background-image:
+        linear-gradient(
+          rgba(255,255,255,0.5) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,0.5) 1px,
+          transparent 1px
+        );
+
+      background-size: 40px 40px;
+
+      mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent 75%
+      );
     }
 
     a {
@@ -48,168 +125,361 @@
       text-decoration: none;
     }
 
-    .container {
-      width: min(1120px, calc(100% - 40px));
-      margin: auto;
+    img {
+      max-width: 100%;
     }
 
-    /* NAVIGATION */
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+
+    /* =========================================================
+       NAVIGATION
+       ========================================================= */
 
     nav {
       position: fixed;
+
       top: 0;
+      left: 0;
+
       width: 100%;
-      z-index: 100;
-      background: rgba(7, 11, 20, 0.72);
-      backdrop-filter: blur(18px);
+
+      z-index: 1000;
+
+      background: rgba(7,10,9,0.76);
+
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+
       border-bottom: 1px solid var(--border);
     }
 
     .nav-inner {
       height: 72px;
+
       display: flex;
+
       align-items: center;
+
       justify-content: space-between;
     }
 
     .logo {
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
       font-family: monospace;
+
+      font-size: 0.95rem;
+
       font-weight: 700;
-      color: var(--blue);
-      font-size: 1rem;
+
+      color: var(--text);
+    }
+
+    .logo-icon {
+      color: var(--green);
+
+      font-size: 1.25rem;
     }
 
     .logo span {
-      color: var(--muted);
+      color: var(--green);
     }
 
     .nav-links {
-      display: flex;
-      gap: 28px;
       list-style: none;
-      font-size: .9rem;
+
+      display: flex;
+
+      gap: 28px;
+
       color: var(--muted);
+
+      font-size: 0.88rem;
     }
 
     .nav-links a {
-      transition: color .2s ease;
+      transition: color 0.2s ease;
     }
 
     .nav-links a:hover {
-      color: var(--blue);
+      color: var(--green-light);
     }
 
-    /* HERO */
+
+    /* =========================================================
+       HERO
+       ========================================================= */
 
     .hero {
       min-height: 100vh;
+
       display: flex;
+
       align-items: center;
-      position: relative;
+
       padding-top: 72px;
+
+      position: relative;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.25fr .75fr;
-      gap: 70px;
+
+      grid-template-columns: 1.2fr 0.8fr;
+
+      gap: 80px;
+
       align-items: center;
     }
 
     .eyebrow {
-      color: var(--green);
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 9px;
+
+      margin-bottom: 22px;
+
       font-family: monospace;
-      font-size: .9rem;
-      margin-bottom: 18px;
+
+      font-size: 0.78rem;
+
+      letter-spacing: 0.1em;
+
+      color: var(--green);
+
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background: var(--green);
+
+      box-shadow:
+        0 0 10px var(--green);
     }
 
     .hero h1 {
-      font-size: clamp(3rem, 7vw, 5.8rem);
-      line-height: .98;
-      letter-spacing: -0.06em;
-      margin-bottom: 25px;
+      font-size: clamp(3.5rem, 8vw, 6.8rem);
+
+      line-height: 0.91;
+
+      letter-spacing: -0.075em;
+
+      margin-bottom: 28px;
+    }
+
+    .hero h1 .name {
+      display: block;
+    }
+
+    .hero h1 .role {
+      display: block;
+
+      margin-top: 13px;
+
+      font-size: 0.42em;
+
+      line-height: 1.1;
+
+      letter-spacing: -0.035em;
+
+      color: var(--muted);
+
+      font-weight: 500;
     }
 
     .gradient {
-      background: linear-gradient(100deg, var(--blue), var(--purple));
+      background:
+        linear-gradient(
+          110deg,
+          var(--green-light),
+          var(--green),
+          #9ae6ff
+        );
+
       -webkit-background-clip: text;
       background-clip: text;
+
       color: transparent;
     }
 
     .hero-description {
       max-width: 650px;
+
       color: var(--muted);
-      font-size: 1.12rem;
+
+      font-size: 1.08rem;
+
       margin-bottom: 32px;
+    }
+
+    .hero-description strong {
+      color: var(--text);
     }
 
     .buttons {
       display: flex;
-      gap: 14px;
+
+      gap: 12px;
+
       flex-wrap: wrap;
     }
 
     .button {
-      padding: 12px 19px;
-      border-radius: 9px;
-      border: 1px solid var(--border);
-      transition: .2s ease;
-      font-size: .9rem;
-    }
+      display: inline-flex;
 
-    .button.primary {
-      background: linear-gradient(100deg, #0ea5e9, #6366f1);
-      border: none;
-      font-weight: 700;
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 12px 19px;
+
+      border-radius: 10px;
+
+      border: 1px solid var(--border);
+
+      font-size: 0.88rem;
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
     }
 
     .button:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+
+      border-color: var(--border-green);
+
+      box-shadow:
+        0 12px 35px rgba(0,0,0,0.25);
     }
 
-    .button.secondary {
-      background: rgba(255,255,255,.025);
+    .button-primary {
+      color: #061009;
+
+      border: none;
+
+      background:
+        linear-gradient(
+          120deg,
+          var(--green-light),
+          var(--green)
+        );
+
+      font-weight: 750;
     }
 
-    /* TERMINAL */
+    .button-secondary {
+      background: rgba(255,255,255,0.025);
+
+      color: var(--text);
+    }
+
+
+    /* =========================================================
+       TERMINAL
+       ========================================================= */
 
     .terminal {
+      background:
+        linear-gradient(
+          145deg,
+          rgba(20,28,24,0.95),
+          rgba(8,12,10,0.95)
+        );
+
       border: 1px solid var(--border);
-      background: rgba(10, 15, 27, .9);
-      border-radius: 14px;
+
+      border-radius: 17px;
+
       overflow: hidden;
-      box-shadow: 0 25px 80px rgba(0,0,0,.35);
+
+      box-shadow:
+        0 30px 90px rgba(0,0,0,0.40),
+        0 0 70px rgba(73,209,125,0.04);
     }
 
-    .terminal-bar {
+    .terminal-header {
       display: flex;
+
       align-items: center;
+
       gap: 7px;
+
       padding: 13px 15px;
+
       border-bottom: 1px solid var(--border);
+
+      background: rgba(255,255,255,0.015);
     }
 
-    .dot {
-      width: 9px;
-      height: 9px;
+    .terminal-dot {
+      width: 10px;
+      height: 10px;
+
       border-radius: 50%;
     }
 
-    .red { background: #fb7185; }
-    .yellow { background: #fbbf24; }
-    .green { background: #34d399; }
+    .terminal-red {
+      background: #ff5f57;
+    }
+
+    .terminal-yellow {
+      background: #febc2e;
+    }
+
+    .terminal-green {
+      background: #28c840;
+    }
+
+    .terminal-title {
+      margin-left: auto;
+      margin-right: auto;
+
+      color: var(--subtle);
+
+      font-family: monospace;
+
+      font-size: 0.7rem;
+    }
 
     .terminal-body {
-      padding: 25px;
-      font-family: monospace;
-      font-size: .85rem;
-      color: #cbd5e1;
+      padding: 26px;
+
+      font-family:
+        "SFMono-Regular",
+        Consolas,
+        "Liberation Mono",
+        monospace;
+
+      font-size: 0.79rem;
+
+      color: #c7d0ca;
     }
 
     .terminal-line {
       margin: 8px 0;
+    }
+
+    .terminal-command {
+      color: var(--green);
     }
 
     .terminal-key {
@@ -217,273 +487,645 @@
     }
 
     .terminal-value {
-      color: #a5f3fc;
+      color: #d1fae5;
     }
 
-    /* GENERAL */
+    .terminal-muted {
+      color: #68736d;
+    }
+
+    .cursor {
+      display: inline-block;
+
+      width: 7px;
+
+      height: 15px;
+
+      background: var(--green);
+
+      vertical-align: middle;
+
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+
+    /* =========================================================
+       SECTIONS
+       ========================================================= */
 
     section {
-      padding: 110px 0;
+      padding: 115px 0;
     }
 
     .section-label {
-      color: var(--blue);
+      color: var(--green);
+
       font-family: monospace;
-      font-size: .8rem;
-      letter-spacing: .12em;
+
+      font-size: 0.72rem;
+
+      letter-spacing: 0.14em;
+
       text-transform: uppercase;
+
       margin-bottom: 12px;
     }
 
     .section-title {
-      font-size: clamp(2rem, 4vw, 3rem);
-      letter-spacing: -.04em;
-      margin-bottom: 16px;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+
+      line-height: 1;
+
+      letter-spacing: -0.055em;
+
+      margin-bottom: 17px;
     }
 
     .section-intro {
+      max-width: 690px;
+
       color: var(--muted);
-      max-width: 680px;
-      margin-bottom: 50px;
+
+      margin-bottom: 48px;
     }
 
-    /* ABOUT */
+
+    /* =========================================================
+       ABOUT
+       ========================================================= */
 
     .about-grid {
       display: grid;
+
       grid-template-columns: 1fr 1fr;
-      gap: 25px;
+
+      gap: 18px;
     }
 
     .card {
-      background: var(--card);
+      position: relative;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(20,27,23,0.80),
+          rgba(12,17,14,0.70)
+        );
+
       border: 1px solid var(--border);
-      border-radius: 14px;
+
+      border-radius: var(--radius);
+
       padding: 28px;
-      backdrop-filter: blur(12px);
+
+      overflow: hidden;
+    }
+
+    .card::after {
+      content: "";
+
+      position: absolute;
+
+      width: 120px;
+      height: 120px;
+
+      top: -70px;
+      right: -60px;
+
+      background: var(--green);
+
+      opacity: 0.04;
+
+      filter: blur(50px);
+
+      border-radius: 50%;
     }
 
     .card h3 {
-      margin-bottom: 10px;
       font-size: 1.05rem;
+
+      margin-bottom: 10px;
     }
 
     .card p {
       color: var(--muted);
-      font-size: .95rem;
+
+      font-size: 0.91rem;
     }
 
-    /* SKILLS */
+    .card-icon {
+      font-size: 1.4rem;
 
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
+      margin-bottom: 18px;
+
+      color: var(--green);
     }
 
-    .skill {
-      padding: 9px 13px;
-      border-radius: 7px;
-      background: rgba(56,189,248,.06);
-      border: 1px solid rgba(56,189,248,.14);
-      color: #cbd5e1;
-      font-family: monospace;
-      font-size: .78rem;
+
+    /* =========================================================
+       APPLE ECOSYSTEM
+       ========================================================= */
+
+    .ecosystem {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 12px;
     }
 
-    /* EXPERIENCE */
+    .eco-item {
+      padding: 24px 20px;
+
+      text-align: center;
+
+      border: 1px solid var(--border);
+
+      background: rgba(255,255,255,0.018);
+
+      border-radius: 14px;
+
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease;
+    }
+
+    .eco-item:hover {
+      transform: translateY(-4px);
+
+      border-color: var(--border-green);
+    }
+
+    .eco-icon {
+      font-size: 1.7rem;
+
+      margin-bottom: 12px;
+    }
+
+    .eco-item h3 {
+      font-size: 0.9rem;
+
+      margin-bottom: 5px;
+    }
+
+    .eco-item p {
+      color: var(--muted);
+
+      font-size: 0.72rem;
+    }
+
+
+    /* =========================================================
+       EXPERIENCE
+       ========================================================= */
 
     .timeline {
       position: relative;
-      max-width: 850px;
+
+      max-width: 880px;
     }
 
     .timeline::before {
       content: "";
+
       position: absolute;
-      left: 8px;
+
       top: 0;
       bottom: 0;
+
+      left: 7px;
+
       width: 1px;
-      background: linear-gradient(var(--blue), transparent);
+
+      background:
+        linear-gradient(
+          var(--green),
+          rgba(73,209,125,0)
+        );
     }
 
     .timeline-item {
       position: relative;
+
       padding-left: 42px;
-      margin-bottom: 55px;
+
+      margin-bottom: 60px;
     }
 
     .timeline-dot {
       position: absolute;
-      left: 2px;
+
+      left: 1px;
+
       top: 5px;
+
       width: 13px;
       height: 13px;
+
       border-radius: 50%;
-      background: var(--blue);
-      box-shadow: 0 0 20px var(--glow);
+
+      background: var(--green);
+
+      box-shadow:
+        0 0 0 4px rgba(73,209,125,0.07),
+        0 0 20px rgba(73,209,125,0.30);
     }
 
     .timeline-date {
-      font-family: monospace;
       color: var(--green);
-      font-size: .78rem;
+
+      font-family: monospace;
+
+      font-size: 0.72rem;
+
+      letter-spacing: 0.08em;
+
       margin-bottom: 7px;
     }
 
     .timeline h3 {
-      font-size: 1.25rem;
+      font-size: 1.3rem;
     }
 
     .timeline-company {
       color: var(--blue);
+
+      font-size: 0.9rem;
+
       margin-bottom: 12px;
     }
 
     .timeline p,
     .timeline li {
       color: var(--muted);
-      font-size: .92rem;
+
+      font-size: 0.9rem;
     }
 
     .timeline ul {
       padding-left: 18px;
+
+      margin-top: 12px;
     }
 
-    /* PROJECTS */
+    .timeline li {
+      margin-bottom: 5px;
+    }
+
+
+    /* =========================================================
+       PROJECTS
+       ========================================================= */
 
     .projects {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 16px;
     }
 
     .project {
-      position: relative;
-      overflow: hidden;
-      min-height: 250px;
-    }
+      min-height: 285px;
 
-    .project::before {
-      content: "";
-      position: absolute;
-      width: 180px;
-      height: 180px;
-      background: var(--blue);
-      filter: blur(100px);
-      opacity: .07;
-      top: -100px;
-      right: -80px;
+      display: flex;
+
+      flex-direction: column;
     }
 
     .project-number {
+      color: var(--subtle);
+
       font-family: monospace;
-      color: #475569;
-      font-size: .8rem;
-      margin-bottom: 30px;
+
+      font-size: 0.68rem;
+
+      margin-bottom: 25px;
     }
 
     .project h3 {
-      margin-bottom: 10px;
+      font-size: 1.05rem;
+
+      margin-bottom: 9px;
     }
 
     .project p {
       color: var(--muted);
-      font-size: .88rem;
+
+      font-size: 0.85rem;
     }
 
     .project-tags {
-      margin-top: 22px;
       display: flex;
+
       flex-wrap: wrap;
-      gap: 6px;
+
+      gap: 7px;
+
+      margin-top: auto;
+
+      padding-top: 25px;
     }
 
     .project-tag {
+      padding: 5px 8px;
+
+      border-radius: 5px;
+
+      border: 1px solid rgba(73,209,125,0.12);
+
+      color: var(--green-light);
+
+      background: rgba(73,209,125,0.035);
+
       font-family: monospace;
-      font-size: .68rem;
-      color: var(--blue);
+
+      font-size: 0.62rem;
     }
 
-    /* SCHOOL TECH */
+
+    /* =========================================================
+       AUTOMATION / SCRIPTING
+       ========================================================= */
+
+    .code-section {
+      display: grid;
+
+      grid-template-columns: 0.85fr 1.15fr;
+
+      gap: 25px;
+
+      align-items: stretch;
+    }
+
+    .code-intro {
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+    }
+
+    .code-window {
+      border-radius: 14px;
+
+      overflow: hidden;
+
+      border: 1px solid var(--border);
+
+      background: #090d0b;
+    }
+
+    .code-header {
+      display: flex;
+
+      gap: 7px;
+
+      padding: 12px 14px;
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .code-body {
+      padding: 25px;
+
+      overflow-x: auto;
+
+      font-family: monospace;
+
+      font-size: 0.77rem;
+
+      line-height: 1.8;
+
+      color: #d1d5db;
+    }
+
+    .code-comment {
+      color: #617068;
+    }
+
+    .code-keyword {
+      color: #c084fc;
+    }
+
+    .code-function {
+      color: #67e8f9;
+    }
+
+    .code-string {
+      color: #86efac;
+    }
+
+    .code-variable {
+      color: #93c5fd;
+    }
+
+
+    /* =========================================================
+       SKILLS
+       ========================================================= */
+
+    .skills {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 9px;
+    }
+
+    .skill {
+      padding: 9px 12px;
+
+      border-radius: 7px;
+
+      border: 1px solid var(--border);
+
+      background: rgba(255,255,255,0.018);
+
+      color: #cdd5d0;
+
+      font-family: monospace;
+
+      font-size: 0.71rem;
+
+      transition:
+        color 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .skill:hover {
+      color: var(--green-light);
+
+      border-color: var(--border-green);
+
+      background: rgba(73,209,125,0.04);
+    }
+
+
+    /* =========================================================
+       IMPACT
+       ========================================================= */
 
     .impact {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 15px;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 13px;
     }
 
     .stat {
       text-align: center;
-      padding: 28px 15px;
+
+      padding: 30px 15px;
     }
 
     .stat-number {
-      font-size: 2.2rem;
+      font-size: 2.25rem;
+
       font-weight: 800;
-      background: linear-gradient(100deg, var(--blue), var(--purple));
+
+      letter-spacing: -0.05em;
+
+      background:
+        linear-gradient(
+          110deg,
+          var(--green-light),
+          var(--green)
+        );
+
       -webkit-background-clip: text;
+
       color: transparent;
     }
 
     .stat-label {
       color: var(--muted);
-      font-size: .8rem;
+
+      font-size: 0.76rem;
     }
 
-    /* CONTACT */
+
+    /* =========================================================
+       CONTACT
+       ========================================================= */
 
     .contact {
-      text-align: center;
       max-width: 760px;
+
       margin: auto;
+
+      text-align: center;
     }
 
-    .contact p {
-      color: var(--muted);
-      margin: 18px auto 30px;
+    .contact .section-intro {
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .contact-email {
       display: inline-block;
-      color: var(--blue);
+
+      color: var(--green-light);
+
       font-family: monospace;
-      margin-bottom: 30px;
+
+      margin-bottom: 28px;
+
+      border-bottom: 1px dashed
+        rgba(143,240,174,0.4);
     }
+
+    .contact-email:hover {
+      color: white;
+    }
+
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
 
     footer {
       border-top: 1px solid var(--border);
-      padding: 25px 0;
-      color: #64748b;
-      font-size: .78rem;
+
+      padding: 26px 0;
+
+      color: var(--subtle);
+
+      font-size: 0.72rem;
+
+      font-family: monospace;
     }
 
     footer .container {
       display: flex;
+
+      align-items: center;
+
       justify-content: space-between;
+
       gap: 20px;
     }
 
-    /* RESPONSIVE */
+    .footer-tree {
+      color: var(--green);
+    }
 
-    @media (max-width: 850px) {
-      .nav-links {
-        display: none;
-      }
 
-      .hero-grid,
-      .about-grid {
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @media (max-width: 900px) {
+
+      .hero-grid {
         grid-template-columns: 1fr;
+
+        gap: 50px;
       }
 
       .hero {
         padding-top: 120px;
-        padding-bottom: 70px;
       }
 
-      .hero h1 {
-        font-size: 3.4rem;
+      .terminal {
+        max-width: 650px;
+      }
+
+      .ecosystem {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .projects {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .code-section {
+        grid-template-columns: 1fr;
+      }
+    }
+
+
+    @media (max-width: 700px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
       }
 
       .projects {
@@ -491,21 +1133,32 @@
       }
 
       .impact {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .hero h1 {
+        font-size: 3.6rem;
+      }
+
+      section {
+        padding: 80px 0;
       }
     }
 
-    @media (max-width: 500px) {
+
+    @media (max-width: 450px) {
+
       .container {
         width: min(100% - 28px, 1120px);
       }
 
-      section {
-        padding: 75px 0;
+      .hero h1 {
+        font-size: 3rem;
       }
 
-      .hero h1 {
-        font-size: 2.8rem;
+      .ecosystem {
+        grid-template-columns: 1fr;
       }
 
       .impact {
@@ -514,502 +1167,1485 @@
 
       footer .container {
         flex-direction: column;
+
+        align-items: flex-start;
       }
     }
   </style>
 </head>
 
+
 <body>
 
-  <!-- NAVIGATION -->
+
+  <!-- =======================================================
+       NAVIGATION
+       ======================================================= -->
 
   <nav>
+
     <div class="container nav-inner">
-      <a href="#" class="logo">&lt;sys.engineer<span>/&gt;</span></a>
+
+      <a href="#" class="logo">
+
+        <span class="logo-icon">⌘</span>
+
+        The<span>Scripting</span>Tree
+
+      </a>
 
       <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Contact</a></li>
+
+        <li>
+          <a href="#about">About</a>
+        </li>
+
+        <li>
+          <a href="#apple">Apple</a>
+        </li>
+
+        <li>
+          <a href="#experience">Experience</a>
+        </li>
+
+        <li>
+          <a href="#projects">Projects</a>
+        </li>
+
+        <li>
+          <a href="#automation">Automation</a>
+        </li>
+
+        <li>
+          <a href="#contact">Contact</a>
+        </li>
+
       </ul>
+
     </div>
+
   </nav>
 
 
-  <!-- HERO -->
+  <!-- =======================================================
+       HERO
+       ======================================================= -->
 
   <header class="hero">
+
     <div class="container hero-grid">
 
+
       <div>
-        <div class="eyebrow">// SYSTEMS ENGINEER · EDUCATION TECHNOLOGY</div>
+
+        <div class="eyebrow">
+          Apple Systems Engineer · Education
+        </div>
+
 
         <h1>
-          Keeping schools
-          <span class="gradient">connected.</span>
+
+          <span class="name">
+            The<span class="gradient">Scripting</span>Tree
+          </span>
+
+          <span class="role">
+            Apple Systems Engineer · Automation · Infrastructure
+          </span>
+
         </h1>
 
+
         <p class="hero-description">
-          I'm <strong>Your Name</strong>, a Systems Engineer focused on
-          reliable infrastructure, cybersecurity, automation and technology
-          that helps teachers and students do their best work.
+
+          I build, automate and maintain Apple technology environments
+          that <strong>just work</strong> — helping schools provide
+          reliable technology for teachers, students and staff.
+
         </p>
 
+
         <div class="buttons">
-          <a href="#projects" class="button primary">View my work →</a>
-          <a href="#contact" class="button secondary">Get in touch</a>
+
+          <a
+            href="#projects"
+            class="button button-primary"
+          >
+            Explore my work →
+          </a>
+
+          <a
+            href="#contact"
+            class="button button-secondary"
+          >
+            Get in touch
+          </a>
+
         </div>
+
       </div>
 
 
-      <!-- TERMINAL CARD -->
+      <!-- TERMINAL -->
 
       <div class="terminal">
-        <div class="terminal-bar">
-          <span class="dot red"></span>
-          <span class="dot yellow"></span>
-          <span class="dot green"></span>
+
+        <div class="terminal-header">
+
+          <span class="terminal-dot terminal-red"></span>
+
+          <span class="terminal-dot terminal-yellow"></span>
+
+          <span class="terminal-dot terminal-green"></span>
+
+          <span class="terminal-title">
+            thescriptingtree — zsh
+          </span>
+
         </div>
+
 
         <div class="terminal-body">
-          <div class="terminal-line">
-            <span class="terminal-key">user</span>@school-it:~$
-          </div>
 
           <div class="terminal-line">
-            systemctl status infrastructure
+
+            <span class="terminal-command">
+              thescriptingtree@school-it
+            </span>:~$
+
+            whoami
+
           </div>
+
+
+          <div class="terminal-line">
+
+            <span class="terminal-value">
+              TheScriptingTree
+            </span>
+
+          </div>
+
 
           <br>
 
-          <div class="terminal-line">
-            <span class="terminal-key">● status:</span>
-            <span class="terminal-value"> operational</span>
-          </div>
 
           <div class="terminal-line">
-            <span class="terminal-key">● uptime:</span>
-            <span class="terminal-value"> 99.9%</span>
+
+            <span class="terminal-key">
+              role
+            </span>
+
+            →
+
+            <span class="terminal-value">
+              Apple Systems Engineer
+            </span>
+
           </div>
 
-          <div class="terminal-line">
-            <span class="terminal-key">● users:</span>
-            <span class="terminal-value"> 1,200+</span>
-          </div>
 
           <div class="terminal-line">
-            <span class="terminal-key">● security:</span>
-            <span class="terminal-value"> protected</span>
+
+            <span class="terminal-key">
+              environment
+            </span>
+
+            →
+
+            <span class="terminal-value">
+              Education
+            </span>
+
           </div>
 
+
           <div class="terminal-line">
-            <span class="terminal-key">● backups:</span>
-            <span class="terminal-value"> verified</span>
+
+            <span class="terminal-key">
+              speciality
+            </span>
+
+            →
+
+            <span class="terminal-value">
+              Jamf + Apple Platforms
+            </span>
+
           </div>
+
+
+          <div class="terminal-line">
+
+            <span class="terminal-key">
+              automation
+            </span>
+
+            →
+
+            <span class="terminal-value">
+              Bash · Zsh · Python
+            </span>
+
+          </div>
+
+
+          <div class="terminal-line">
+
+            <span class="terminal-key">
+              mission
+            </span>
+
+            →
+
+            <span class="terminal-value">
+              Make IT boring.
+            </span>
+
+          </div>
+
+
+          <div class="terminal-line">
+
+            <span class="terminal-key">
+              philosophy
+            </span>
+
+            →
+
+            <span class="terminal-value">
+              Make classrooms work.
+            </span>
+
+          </div>
+
 
           <br>
 
+
           <div class="terminal-line">
-            <span class="terminal-key">system</span> ready_
+
+            <span class="terminal-muted">
+              $ systemctl status everything
+            </span>
+
           </div>
+
+
+          <div class="terminal-line">
+
+            <span class="terminal-key">
+              ● infrastructure:
+            </span>
+
+            <span class="terminal-value">
+              operational
+            </span>
+
+          </div>
+
+
+          <div class="terminal-line">
+
+            <span class="terminal-key">
+              ● automation:
+            </span>
+
+            <span class="terminal-value">
+              running
+            </span>
+
+          </div>
+
+
+          <div class="terminal-line">
+
+            <span class="terminal-key">
+              ● coffee:
+            </span>
+
+            <span class="terminal-value">
+              required
+            </span>
+
+          </div>
+
+
+          <br>
+
+
+          <div class="terminal-line">
+
+            <span class="terminal-command">
+              $
+            </span>
+
+            <span class="cursor"></span>
+
+          </div>
+
         </div>
+
       </div>
 
     </div>
+
   </header>
 
 
-  <!-- ABOUT -->
+  <!-- =======================================================
+       ABOUT
+       ======================================================= -->
 
   <section id="about">
+
     <div class="container">
 
-      <div class="section-label">01 / About</div>
+      <div class="section-label">
+        01 / About the Tree
+      </div>
 
-      <h2 class="section-title">Technology behind the classroom.</h2>
+
+      <h2 class="section-title">
+        Technology behind the classroom.
+      </h2>
+
 
       <p class="section-intro">
-        Modern schools depend on technology for almost everything.
-        My role is to make sure that technology is reliable, secure,
-        manageable and — most importantly — invisible when everything
-        is working correctly.
+
+        Schools rely on technology for almost everything.
+        My job is to make that technology reliable, secure,
+        manageable and — when possible — completely invisible.
+
       </p>
+
 
       <div class="about-grid">
 
-        <div class="card">
-          <h3>Systems & Infrastructure</h3>
-          <p>
-            Designing, maintaining and troubleshooting the systems that
-            keep a school running — servers, networks, endpoints, identity,
-            cloud services and critical infrastructure.
-          </p>
-        </div>
 
         <div class="card">
-          <h3>Education Technology</h3>
+
+          <div class="card-icon">
+            
+          </div>
+
+          <h3>
+            Apple at Scale
+          </h3>
+
           <p>
-            Supporting staff and students across classrooms, administration
-            and learning environments while translating technical problems
-            into practical solutions.
+
+            Managing Apple devices across education environments,
+            from deployment and configuration through to ongoing
+            management, troubleshooting and lifecycle planning.
+
           </p>
+
         </div>
 
-        <div class="card">
-          <h3>Security & Reliability</h3>
-          <p>
-            Taking a proactive approach to cybersecurity, backups, access
-            control, patching, monitoring and incident response.
-          </p>
-        </div>
 
         <div class="card">
-          <h3>Automation</h3>
+
+          <div class="card-icon">
+            ◈
+          </div>
+
+          <h3>
+            Jamf Management
+          </h3>
+
           <p>
-            Eliminating repetitive work through scripting, automation and
-            better processes — giving IT teams more time to solve problems
-            that actually require people.
+
+            Using Jamf to turn fleets of Macs and iPads into
+            predictable, secure and manageable platforms for
+            teachers, students and administrators.
+
           </p>
+
         </div>
+
+
+        <div class="card">
+
+          <div class="card-icon">
+            &gt;_
+          </div>
+
+          <h3>
+            Automation & Scripting
+          </h3>
+
+          <p>
+
+            Writing scripts and building automation to eliminate
+            repetitive administration, solve problems at scale
+            and make IT operations more efficient.
+
+          </p>
+
+        </div>
+
+
+        <div class="card">
+
+          <div class="card-icon">
+            ⌁
+          </div>
+
+          <h3>
+            Education Technology
+          </h3>
+
+          <p>
+
+            Supporting the people who actually use technology:
+            students, teachers and staff. Good IT should enable
+            education rather than get in its way.
+
+          </p>
+
+        </div>
+
 
       </div>
+
     </div>
+
   </section>
 
 
-  <!-- EXPERIENCE -->
+  <!-- =======================================================
+       APPLE ECOSYSTEM
+       ======================================================= -->
 
-  <section id="experience">
+  <section id="apple">
+
     <div class="container">
 
-      <div class="section-label">02 / Experience</div>
+      <div class="section-label">
+        02 / Apple Ecosystem
+      </div>
 
-      <h2 class="section-title">Building reliable systems.</h2>
+
+      <h2 class="section-title">
+        Deep in the Apple ecosystem.
+      </h2>
+
 
       <p class="section-intro">
-        A snapshot of the work I do across infrastructure, support,
-        security and school technology.
+
+        The technologies and platforms that make up a modern
+        Apple-focused education environment.
+
       </p>
+
+
+      <div class="ecosystem">
+
+
+        <div class="eco-item">
+
+          <div class="eco-icon">
+            
+          </div>
+
+          <h3>
+            macOS
+          </h3>
+
+          <p>
+            Deployment · Configuration · Support
+          </p>
+
+        </div>
+
+
+        <div class="eco-item">
+
+          <div class="eco-icon">
+            ▣
+          </div>
+
+          <h3>
+            iPadOS
+          </h3>
+
+          <p>
+            Student devices · Restrictions · Apps
+          </p>
+
+        </div>
+
+
+        <div class="eco-item">
+
+          <div class="eco-icon">
+            ◈
+          </div>
+
+          <h3>
+            Jamf
+          </h3>
+
+          <p>
+            MDM · Policies · Profiles · Automation
+          </p>
+
+        </div>
+
+
+        <div class="eco-item">
+
+          <div class="eco-icon">
+            ☁
+          </div>
+
+          <h3>
+            Apple School Manager
+          </h3>
+
+          <p>
+            Devices · Accounts · Apps · Education
+          </p>
+
+        </div>
+
+
+        <div class="eco-item">
+
+          <div class="eco-icon">
+            &lt;/&gt;
+          </div>
+
+          <h3>
+            AppleScript
+          </h3>
+
+          <p>
+            Workflow automation
+          </p>
+
+        </div>
+
+
+        <div class="eco-item">
+
+          <div class="eco-icon">
+            $
+          </div>
+
+          <h3>
+            Shell
+          </h3>
+
+          <p>
+            Bash · Zsh · CLI automation
+          </p>
+
+        </div>
+
+
+        <div class="eco-item">
+
+          <div class="eco-icon">
+            🐍
+          </div>
+
+          <h3>
+            Python
+          </h3>
+
+          <p>
+            APIs · Automation · Tooling
+          </p>
+
+        </div>
+
+
+        <div class="eco-item">
+
+          <div class="eco-icon">
+            ⚙
+          </div>
+
+          <h3>
+            APIs
+          </h3>
+
+          <p>
+            Integrations · Automation · Data
+          </p>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
+       EXPERIENCE
+       ======================================================= -->
+
+  <section id="experience">
+
+    <div class="container">
+
+      <div class="section-label">
+        03 / Experience
+      </div>
+
+
+      <h2 class="section-title">
+        Keeping the school running.
+      </h2>
+
+
+      <p class="section-intro">
+
+        A snapshot of the work behind the scenes — managing
+        infrastructure, devices, systems and the technology
+        used every day across an education environment.
+
+      </p>
+
 
       <div class="timeline">
 
+
         <div class="timeline-item">
+
           <div class="timeline-dot"></div>
 
-          <div class="timeline-date">2023 — PRESENT</div>
 
-          <h3>Systems Engineer</h3>
+          <div class="timeline-date">
+            2023 — PRESENT
+          </div>
+
+
+          <h3>
+            Apple Systems Engineer
+          </h3>
+
 
           <div class="timeline-company">
             Your School / Education Organisation
           </div>
 
+
           <p>
-            Responsible for the day-to-day operation and improvement of
-            school technology infrastructure.
+
+            Responsible for the administration, automation and
+            ongoing improvement of Apple technology across the
+            school environment.
+
           </p>
 
-          <br>
 
           <ul>
-            <li>Manage servers, networking and endpoint infrastructure.</li>
-            <li>Support Microsoft 365 / Entra ID environments.</li>
-            <li>Implement security, patching and backup strategies.</li>
-            <li>Automate repetitive administration and provisioning.</li>
-            <li>Provide technical support across staff and classrooms.</li>
+
+            <li>
+              Manage Apple devices using Jamf.
+            </li>
+
+            <li>
+              Configure macOS and iPadOS deployments.
+            </li>
+
+            <li>
+              Develop scripts and automation for IT operations.
+            </li>
+
+            <li>
+              Manage applications, configuration profiles and policies.
+            </li>
+
+            <li>
+              Troubleshoot complex Apple platform issues.
+            </li>
+
+            <li>
+              Support teachers, students and administrative staff.
+            </li>
+
+            <li>
+              Improve security, reliability and device compliance.
+            </li>
+
           </ul>
+
         </div>
 
 
         <div class="timeline-item">
+
           <div class="timeline-dot"></div>
 
-          <div class="timeline-date">PREVIOUS ROLE</div>
 
-          <h3>IT / Systems Administrator</h3>
+          <div class="timeline-date">
+            PREVIOUS ROLE
+          </div>
+
+
+          <h3>
+            IT / Systems Administrator
+          </h3>
+
 
           <div class="timeline-company">
             Previous Organisation
           </div>
 
+
           <p>
-            Supported users and infrastructure while helping improve
-            operational efficiency and system reliability.
+
+            Supported users, infrastructure and technology
+            operations while developing a growing focus on
+            Apple administration and automation.
+
           </p>
+
         </div>
 
+
       </div>
+
     </div>
+
   </section>
 
 
-  <!-- SCHOOL IMPACT -->
-
-  <section>
-    <div class="container">
-
-      <div class="section-label">03 / Impact</div>
-
-      <h2 class="section-title">Technology with measurable impact.</h2>
-
-      <p class="section-intro">
-        Replace these example figures with numbers from your own
-        environment to show the scale of your work.
-      </p>
-
-      <div class="impact">
-
-        <div class="card stat">
-          <div class="stat-number">1,200+</div>
-          <div class="stat-label">Users Supported</div>
-        </div>
-
-        <div class="card stat">
-          <div class="stat-number">99.9%</div>
-          <div class="stat-label">Infrastructure Uptime</div>
-        </div>
-
-        <div class="card stat">
-          <div class="stat-number">24/7</div>
-          <div class="stat-label">Critical Monitoring</div>
-        </div>
-
-        <div class="card stat">
-          <div class="stat-number">50+</div>
-          <div class="stat-label">Systems Managed</div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- PROJECTS -->
+  <!-- =======================================================
+       PROJECTS
+       ======================================================= -->
 
   <section id="projects">
+
     <div class="container">
 
-      <div class="section-label">04 / Selected Work</div>
+      <div class="section-label">
+        04 / Selected Work
+      </div>
 
-      <h2 class="section-title">Things I've built & improved.</h2>
+
+      <h2 class="section-title">
+        Things I've built & improved.
+      </h2>
+
 
       <p class="section-intro">
-        Use this section to showcase projects without exposing
-        confidential school information.
+
+        Showcase real projects here. Keep school names,
+        infrastructure details and sensitive information
+        private where necessary.
+
       </p>
+
 
       <div class="projects">
 
-        <div class="card project">
-          <div class="project-number">PROJECT_01</div>
 
-          <h3>Infrastructure Modernisation</h3>
+        <div class="card project">
+
+          <div class="project-number">
+            PROJECT_01
+          </div>
+
+          <h3>
+            Jamf Fleet Management
+          </h3>
 
           <p>
-            Improved server and network infrastructure to increase
-            reliability, performance and visibility across the school.
+
+            Designed and maintained Jamf workflows for managing
+            a large fleet of Apple devices, improving consistency
+            and reducing manual administration.
+
           </p>
 
           <div class="project-tags">
-            <span class="project-tag">NETWORKING</span>
-            <span class="project-tag">SERVERS</span>
-            <span class="project-tag">MONITORING</span>
+
+            <span class="project-tag">
+              JAMF
+            </span>
+
+            <span class="project-tag">
+              MDM
+            </span>
+
+            <span class="project-tag">
+              MACOS
+            </span>
+
           </div>
+
         </div>
 
 
         <div class="card project">
-          <div class="project-number">PROJECT_02</div>
 
-          <h3>Identity & Security</h3>
+          <div class="project-number">
+            PROJECT_02
+          </div>
+
+          <h3>
+            Automated Mac Deployment
+          </h3>
 
           <p>
-            Strengthened identity management, access controls and
-            authentication while improving the user experience.
+
+            Streamlined the deployment and configuration of
+            Macs using automated enrolment, configuration
+            profiles, policies and scripts.
+
           </p>
 
           <div class="project-tags">
-            <span class="project-tag">ENTRA ID</span>
-            <span class="project-tag">MFA</span>
-            <span class="project-tag">SECURITY</span>
+
+            <span class="project-tag">
+              JAMF
+            </span>
+
+            <span class="project-tag">
+              DEP
+            </span>
+
+            <span class="project-tag">
+              AUTOMATION
+            </span>
+
           </div>
+
         </div>
 
 
         <div class="card project">
-          <div class="project-number">PROJECT_03</div>
 
-          <h3>IT Automation</h3>
+          <div class="project-number">
+            PROJECT_03
+          </div>
+
+          <h3>
+            The Script Library
+          </h3>
 
           <p>
-            Created scripts and automated workflows to reduce manual
-            administration and accelerate common IT tasks.
+
+            A collection of reusable shell and Python tools
+            designed to solve common Mac administration and
+            education IT problems.
+
           </p>
 
           <div class="project-tags">
-            <span class="project-tag">POWERSHELL</span>
-            <span class="project-tag">AUTOMATION</span>
-            <span class="project-tag">API</span>
+
+            <span class="project-tag">
+              BASH
+            </span>
+
+            <span class="project-tag">
+              ZSH
+            </span>
+
+            <span class="project-tag">
+              PYTHON
+            </span>
+
           </div>
+
         </div>
 
 
         <div class="card project">
-          <div class="project-number">PROJECT_04</div>
 
-          <h3>Endpoint Management</h3>
+          <div class="project-number">
+            PROJECT_04
+          </div>
+
+          <h3>
+            Application Management
+          </h3>
 
           <p>
-            Improved deployment, configuration and lifecycle management
-            for staff and student devices.
+
+            Built repeatable workflows for packaging, deploying
+            and maintaining applications across managed Apple
+            devices.
+
           </p>
 
           <div class="project-tags">
-            <span class="project-tag">INTUNE</span>
-            <span class="project-tag">WINDOWS</span>
-            <span class="project-tag">MDM</span>
+
+            <span class="project-tag">
+              PKG
+            </span>
+
+            <span class="project-tag">
+              JAMF
+            </span>
+
+            <span class="project-tag">
+              MACOS
+            </span>
+
           </div>
+
         </div>
 
 
         <div class="card project">
-          <div class="project-number">PROJECT_05</div>
 
-          <h3>Backup & Disaster Recovery</h3>
+          <div class="project-number">
+            PROJECT_05
+          </div>
+
+          <h3>
+            Device Lifecycle
+          </h3>
 
           <p>
-            Developed and tested resilient backup processes designed to
-            protect critical school systems and data.
+
+            Improved workflows for device provisioning,
+            maintenance, replacement and retirement across
+            the Apple fleet.
+
           </p>
 
           <div class="project-tags">
-            <span class="project-tag">BACKUP</span>
-            <span class="project-tag">DR</span>
-            <span class="project-tag">BCP</span>
+
+            <span class="project-tag">
+              MDM
+            </span>
+
+            <span class="project-tag">
+              ASM
+            </span>
+
+            <span class="project-tag">
+              LIFECYCLE
+            </span>
+
           </div>
+
         </div>
 
 
         <div class="card project">
-          <div class="project-number">PROJECT_06</div>
 
-          <h3>Classroom Technology</h3>
+          <div class="project-number">
+            PROJECT_06
+          </div>
+
+          <h3>
+            Classroom Technology
+          </h3>
 
           <p>
-            Supported reliable classroom technology and created
-            streamlined processes for teachers and support staff.
+
+            Supporting reliable Apple technology in classrooms,
+            ensuring teachers and students can focus on learning
+            instead of troubleshooting.
+
           </p>
 
           <div class="project-tags">
-            <span class="project-tag">EDTECH</span>
-            <span class="project-tag">AV</span>
-            <span class="project-tag">SUPPORT</span>
+
+            <span class="project-tag">
+              EDTECH
+            </span>
+
+            <span class="project-tag">
+              APPLE
+            </span>
+
+            <span class="project-tag">
+              SUPPORT
+            </span>
+
           </div>
+
         </div>
+
 
       </div>
+
     </div>
+
   </section>
 
 
-  <!-- SKILLS -->
+  <!-- =======================================================
+       AUTOMATION
+       ======================================================= -->
 
-  <section id="skills">
+  <section id="automation">
+
     <div class="container">
 
-      <div class="section-label">05 / Toolkit</div>
+      <div class="code-section">
 
-      <h2 class="section-title">The technology I work with.</h2>
+
+        <div class="code-intro">
+
+          <div class="section-label">
+            05 / Automation
+          </div>
+
+
+          <h2 class="section-title">
+            If I do it twice,
+            I script it.
+          </h2>
+
+
+          <p class="section-intro">
+
+            Automation is one of the most powerful tools in
+            systems administration. I use scripting to turn
+            repetitive tasks into reliable, repeatable workflows.
+
+          </p>
+
+
+          <div class="skills">
+
+            <span class="skill">
+              Bash
+            </span>
+
+            <span class="skill">
+              Zsh
+            </span>
+
+            <span class="skill">
+              Python
+            </span>
+
+            <span class="skill">
+              AppleScript
+            </span>
+
+            <span class="skill">
+              Jamf API
+            </span>
+
+            <span class="skill">
+              REST APIs
+            </span>
+
+            <span class="skill">
+              JSON
+            </span>
+
+            <span class="skill">
+              Git
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="code-window">
+
+          <div class="code-header">
+
+            <span class="terminal-dot terminal-red"></span>
+
+            <span class="terminal-dot terminal-yellow"></span>
+
+            <span class="terminal-dot terminal-green"></span>
+
+          </div>
+
+
+          <div class="code-body">
+
+            <div>
+              <span class="code-comment">
+                # Example: automate a common task
+              </span>
+            </div>
+
+
+            <div>
+              <span class="code-keyword">
+                #!/bin/zsh
+              </span>
+            </div>
+
+
+            <br>
+
+
+            <div>
+
+              <span class="code-variable">
+                JAMF
+              </span>
+              =<span class="code-string">
+                "/usr/local/bin/jamf"
+              </span>
+
+            </div>
+
+
+            <br>
+
+
+            <div>
+
+              <span class="code-comment">
+                # Gather device information
+              </span>
+
+            </div>
+
+
+            <div>
+
+              <span class="code-variable">
+                serial
+              </span>=<span class="code-string">
+                $(system_profiler SPHardwareDataType |
+                awk '/Serial/ {print $4}')
+              </span>
+
+            </div>
+
+
+            <br>
+
+
+            <div>
+
+              <span class="code-comment">
+                # Update management inventory
+              </span>
+
+            </div>
+
+
+            <div>
+
+              <span class="code-variable">
+                $JAMF
+              </span>
+              recon
+
+            </div>
+
+
+            <br>
+
+
+            <div>
+
+              <span class="code-comment">
+                # One less thing to do manually.
+              </span>
+
+            </div>
+
+
+            <br>
+
+
+            <div>
+
+              <span class="code-function">
+                echo
+              </span>
+
+              <span class="code-string">
+                "The tree keeps growing."
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
+       TOOLBOX
+       ======================================================= -->
+
+  <section id="skills">
+
+    <div class="container">
+
+      <div class="section-label">
+        06 / Toolbox
+      </div>
+
+
+      <h2 class="section-title">
+        The technology I work with.
+      </h2>
+
 
       <p class="section-intro">
-        Replace these with your actual technologies and platforms.
+
+        A selection of platforms, tools and technologies
+        that make up my systems engineering toolkit.
+
       </p>
+
 
       <div class="skills">
 
-        <span class="skill">WINDOWS SERVER</span>
-        <span class="skill">MICROSOFT 365</span>
-        <span class="skill">ENTRA ID</span>
-        <span class="skill">INTUNE</span>
-        <span class="skill">ACTIVE DIRECTORY</span>
-        <span class="skill">POWERSHELL</span>
+        <span class="skill">APPLE</span>
+
+        <span class="skill">MACOS</span>
+
+        <span class="skill">IPADOS</span>
+
+        <span class="skill">JAMF PRO</span>
+
+        <span class="skill">APPLE SCHOOL MANAGER</span>
+
+        <span class="skill">APPLE BUSINESS MANAGER</span>
+
+        <span class="skill">BASH</span>
+
+        <span class="skill">ZSH</span>
+
         <span class="skill">PYTHON</span>
-        <span class="skill">VMWARE</span>
-        <span class="skill">HYPER-V</span>
-        <span class="skill">AZURE</span>
-        <span class="skill">NETWORKING</span>
-        <span class="skill">FIREWALLS</span>
-        <span class="skill">CISCO</span>
-        <span class="skill">WI-FI</span>
-        <span class="skill">CYBERSECURITY</span>
-        <span class="skill">BACKUPS</span>
-        <span class="skill">MONITORING</span>
+
+        <span class="skill">APPLESCRIPT</span>
+
+        <span class="skill">JAMF API</span>
+
+        <span class="skill">REST API</span>
+
         <span class="skill">GIT</span>
-        <span class="skill">LINUX</span>
+
+        <span class="skill">GITHUB</span>
+
+        <span class="skill">NETWORKING</span>
+
+        <span class="skill">DNS</span>
+
+        <span class="skill">DHCP</span>
+
+        <span class="skill">WI-FI</span>
+
+        <span class="skill">CYBERSECURITY</span>
+
+        <span class="skill">IDENTITY</span>
+
         <span class="skill">AUTOMATION</span>
 
+        <span class="skill">MDM</span>
+
+        <span class="skill">DEPLOYMENT</span>
+
+        <span class="skill">EDTECH</span>
+
       </div>
+
     </div>
+
   </section>
 
 
-  <!-- CONTACT -->
+  <!-- =======================================================
+       IMPACT
+       ======================================================= -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="section-label">
+        07 / Impact
+      </div>
+
+
+      <h2 class="section-title">
+        Technology at scale.
+      </h2>
+
+
+      <p class="section-intro">
+
+        Replace these example numbers with real metrics
+        from your own environment.
+
+      </p>
+
+
+      <div class="impact">
+
+
+        <div class="card stat">
+
+          <div class="stat-number">
+            1,000+
+          </div>
+
+          <div class="stat-label">
+            Apple Devices
+          </div>
+
+        </div>
+
+
+        <div class="card stat">
+
+          <div class="stat-number">
+            99.9%
+          </div>
+
+          <div class="stat-label">
+            Target Reliability
+          </div>
+
+        </div>
+
+
+        <div class="card stat">
+
+          <div class="stat-number">
+            24/7
+          </div>
+
+          <div class="stat-label">
+            Systems
+          </div>
+
+        </div>
+
+
+        <div class="card stat">
+
+          <div class="stat-number">
+            ∞
+          </div>
+
+          <div class="stat-label">
+            Scripts Written
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
+       CONTACT
+       ======================================================= -->
 
   <section id="contact">
+
     <div class="container">
 
       <div class="contact">
 
-        <div class="section-label">06 / Contact</div>
+        <div class="section-label">
+          08 / Contact
+        </div>
+
 
         <h2 class="section-title">
-          Let's build something reliable.
+          Let's grow something.
         </h2>
 
-        <p>
-          Interested in technology, education, infrastructure or
-          solving interesting systems problems? I'd be happy to connect.
+
+        <p class="section-intro">
+
+          Interested in Apple technology, education,
+          automation or solving interesting systems problems?
+
+          I'm always happy to connect with other people
+          working in the space.
+
         </p>
 
-        <!-- CHANGE THIS EMAIL -->
-        <a class="contact-email"
-           href="mailto:your.email@example.com">
+
+        <!-- CHANGE YOUR EMAIL -->
+
+        <a
+          href="mailto:your.email@example.com"
+          class="contact-email"
+        >
           your.email@example.com
         </a>
 
-        <div class="buttons" style="justify-content:center;">
 
-          <!-- CHANGE THIS LINK -->
-          <a class="button primary"
-             href="https://github.com/"
-             target="_blank">
+        <div
+          class="buttons"
+          style="justify-content:center;"
+        >
+
+          <!-- CHANGE TO YOUR GITHUB -->
+
+          <a
+            href="https://github.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button button-primary"
+          >
             GitHub ↗
           </a>
 
-          <!-- CHANGE THIS LINK -->
-          <a class="button secondary"
-             href="https://www.linkedin.com/"
-             target="_blank">
+
+          <!-- CHANGE TO YOUR LINKEDIN -->
+
+          <a
+            href="https://www.linkedin.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button button-secondary"
+          >
             LinkedIn ↗
           </a>
 
         </div>
 
       </div>
+
     </div>
+
   </section>
 
 
-  <!-- FOOTER -->
+  <!-- =======================================================
+       FOOTER
+       ======================================================= -->
 
   <footer>
+
     <div class="container">
-      <span>© 2026 Your Name</span>
-      <span>Systems Engineer · Education Technology</span>
+
+      <span>
+        © 2026 TheScriptingTree
+      </span>
+
+      <span class="footer-tree">
+        🌱 Apple Systems · Automation · Education
+      </span>
+
     </div>
+
   </footer>
+
 
 </body>
 </html>

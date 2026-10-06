@@ -1,75 +1,1015 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>PK's Portfolio</title>
-    <link rel="icon" type="image/x-icon" href="/assets/img/favicon.png">
-    <link rel="stylesheet" href="/assets/css/index.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Your Name | Systems Engineer</title>
+  <meta name="description" content="Portfolio of Your Name, a Systems Engineer specialising in education technology, infrastructure, cybersecurity and IT operations.">
+
+  <style>
+    :root {
+      --bg: #070b14;
+      --bg-soft: #0d1321;
+      --card: rgba(15, 23, 42, 0.72);
+      --border: rgba(148, 163, 184, 0.14);
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --blue: #38bdf8;
+      --purple: #818cf8;
+      --green: #34d399;
+      --glow: rgba(56, 189, 248, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(56,189,248,.10), transparent 30%),
+        radial-gradient(circle at 85% 25%, rgba(129,140,248,.10), transparent 30%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: auto;
+    }
+
+    /* NAVIGATION */
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(7, 11, 20, 0.72);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: monospace;
+      font-weight: 700;
+      color: var(--blue);
+      font-size: 1rem;
+    }
+
+    .logo span {
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      font-size: .9rem;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      transition: color .2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--blue);
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding-top: 72px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--green);
+      font-family: monospace;
+      font-size: .9rem;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 7vw, 5.8rem);
+      line-height: .98;
+      letter-spacing: -0.06em;
+      margin-bottom: 25px;
+    }
+
+    .gradient {
+      background: linear-gradient(100deg, var(--blue), var(--purple));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-description {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 1.12rem;
+      margin-bottom: 32px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      padding: 12px 19px;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      transition: .2s ease;
+      font-size: .9rem;
+    }
+
+    .button.primary {
+      background: linear-gradient(100deg, #0ea5e9, #6366f1);
+      border: none;
+      font-weight: 700;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+
+    .button.secondary {
+      background: rgba(255,255,255,.025);
+    }
+
+    /* TERMINAL */
+
+    .terminal {
+      border: 1px solid var(--border);
+      background: rgba(10, 15, 27, .9);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 25px 80px rgba(0,0,0,.35);
+    }
+
+    .terminal-bar {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 13px 15px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+    }
+
+    .red { background: #fb7185; }
+    .yellow { background: #fbbf24; }
+    .green { background: #34d399; }
+
+    .terminal-body {
+      padding: 25px;
+      font-family: monospace;
+      font-size: .85rem;
+      color: #cbd5e1;
+    }
+
+    .terminal-line {
+      margin: 8px 0;
+    }
+
+    .terminal-key {
+      color: var(--blue);
+    }
+
+    .terminal-value {
+      color: #a5f3fc;
+    }
+
+    /* GENERAL */
+
+    section {
+      padding: 110px 0;
+    }
+
+    .section-label {
+      color: var(--blue);
+      font-family: monospace;
+      font-size: .8rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -.04em;
+      margin-bottom: 16px;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 680px;
+      margin-bottom: 50px;
+    }
+
+    /* ABOUT */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+      backdrop-filter: blur(12px);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 1.05rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    /* SKILLS */
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill {
+      padding: 9px 13px;
+      border-radius: 7px;
+      background: rgba(56,189,248,.06);
+      border: 1px solid rgba(56,189,248,.14);
+      color: #cbd5e1;
+      font-family: monospace;
+      font-size: .78rem;
+    }
+
+    /* EXPERIENCE */
+
+    .timeline {
+      position: relative;
+      max-width: 850px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 8px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(var(--blue), transparent);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 42px;
+      margin-bottom: 55px;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 2px;
+      top: 5px;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: var(--blue);
+      box-shadow: 0 0 20px var(--glow);
+    }
+
+    .timeline-date {
+      font-family: monospace;
+      color: var(--green);
+      font-size: .78rem;
+      margin-bottom: 7px;
+    }
+
+    .timeline h3 {
+      font-size: 1.25rem;
+    }
+
+    .timeline-company {
+      color: var(--blue);
+      margin-bottom: 12px;
+    }
+
+    .timeline p,
+    .timeline li {
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .timeline ul {
+      padding-left: 18px;
+    }
+
+    /* PROJECTS */
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .project {
+      position: relative;
+      overflow: hidden;
+      min-height: 250px;
+    }
+
+    .project::before {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      background: var(--blue);
+      filter: blur(100px);
+      opacity: .07;
+      top: -100px;
+      right: -80px;
+    }
+
+    .project-number {
+      font-family: monospace;
+      color: #475569;
+      font-size: .8rem;
+      margin-bottom: 30px;
+    }
+
+    .project h3 {
+      margin-bottom: 10px;
+    }
+
+    .project p {
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
+    .project-tags {
+      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .project-tag {
+      font-family: monospace;
+      font-size: .68rem;
+      color: var(--blue);
+    }
+
+    /* SCHOOL TECH */
+
+    .impact {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    .stat {
+      text-align: center;
+      padding: 28px 15px;
+    }
+
+    .stat-number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      background: linear-gradient(100deg, var(--blue), var(--purple));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: .8rem;
+    }
+
+    /* CONTACT */
+
+    .contact {
+      text-align: center;
+      max-width: 760px;
+      margin: auto;
+    }
+
+    .contact p {
+      color: var(--muted);
+      margin: 18px auto 30px;
+    }
+
+    .contact-email {
+      display: inline-block;
+      color: var(--blue);
+      font-family: monospace;
+      margin-bottom: 30px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 25px 0;
+      color: #64748b;
+      font-size: .78rem;
+    }
+
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 850px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-grid,
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 120px;
+        padding-bottom: 70px;
+      }
+
+      .hero h1 {
+        font-size: 3.4rem;
+      }
+
+      .projects {
+        grid-template-columns: 1fr;
+      }
+
+      .impact {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 500px) {
+      .container {
+        width: min(100% - 28px, 1120px);
+      }
+
+      section {
+        padding: 75px 0;
+      }
+
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+
+      .impact {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      footer .container {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 
-
 <body>
-    <!-- NAVBAR -->
-    <header>
-        <div id="menuBar">
-            <nav id="navbar">
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
+
+  <!-- NAVIGATION -->
+
+  <nav>
+    <div class="container nav-inner">
+      <a href="#" class="logo">&lt;sys.engineer<span>/&gt;</span></a>
+
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <!-- HERO -->
+
+  <header class="hero">
+    <div class="container hero-grid">
+
+      <div>
+        <div class="eyebrow">// SYSTEMS ENGINEER · EDUCATION TECHNOLOGY</div>
+
+        <h1>
+          Keeping schools
+          <span class="gradient">connected.</span>
+        </h1>
+
+        <p class="hero-description">
+          I'm <strong>Your Name</strong>, a Systems Engineer focused on
+          reliable infrastructure, cybersecurity, automation and technology
+          that helps teachers and students do their best work.
+        </p>
+
+        <div class="buttons">
+          <a href="#projects" class="button primary">View my work →</a>
+          <a href="#contact" class="button secondary">Get in touch</a>
+        </div>
+      </div>
+
+
+      <!-- TERMINAL CARD -->
+
+      <div class="terminal">
+        <div class="terminal-bar">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
         </div>
 
-    </header>
+        <div class="terminal-body">
+          <div class="terminal-line">
+            <span class="terminal-key">user</span>@school-it:~$
+          </div>
 
-    <!-- ABOUT -->
-    <section id="home">
-        <div>
-            
+          <div class="terminal-line">
+            systemctl status infrastructure
+          </div>
+
+          <br>
+
+          <div class="terminal-line">
+            <span class="terminal-key">● status:</span>
+            <span class="terminal-value"> operational</span>
+          </div>
+
+          <div class="terminal-line">
+            <span class="terminal-key">● uptime:</span>
+            <span class="terminal-value"> 99.9%</span>
+          </div>
+
+          <div class="terminal-line">
+            <span class="terminal-key">● users:</span>
+            <span class="terminal-value"> 1,200+</span>
+          </div>
+
+          <div class="terminal-line">
+            <span class="terminal-key">● security:</span>
+            <span class="terminal-value"> protected</span>
+          </div>
+
+          <div class="terminal-line">
+            <span class="terminal-key">● backups:</span>
+            <span class="terminal-value"> verified</span>
+          </div>
+
+          <br>
+
+          <div class="terminal-line">
+            <span class="terminal-key">system</span> ready_
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- SKILLS -->
-    <section id="skills">
-        <div>
-            
+    </div>
+  </header>
+
+
+  <!-- ABOUT -->
+
+  <section id="about">
+    <div class="container">
+
+      <div class="section-label">01 / About</div>
+
+      <h2 class="section-title">Technology behind the classroom.</h2>
+
+      <p class="section-intro">
+        Modern schools depend on technology for almost everything.
+        My role is to make sure that technology is reliable, secure,
+        manageable and — most importantly — invisible when everything
+        is working correctly.
+      </p>
+
+      <div class="about-grid">
+
+        <div class="card">
+          <h3>Systems & Infrastructure</h3>
+          <p>
+            Designing, maintaining and troubleshooting the systems that
+            keep a school running — servers, networks, endpoints, identity,
+            cloud services and critical infrastructure.
+          </p>
         </div>
-    </section>
 
-    <!-- EDUCATION -->
-    <section id="education">
-        <div>
-            
+        <div class="card">
+          <h3>Education Technology</h3>
+          <p>
+            Supporting staff and students across classrooms, administration
+            and learning environments while translating technical problems
+            into practical solutions.
+          </p>
         </div>
-    </section>
 
-    <!-- EXPERIENCE -->
-    <section id="experienc">
-        <div>
-            
+        <div class="card">
+          <h3>Security & Reliability</h3>
+          <p>
+            Taking a proactive approach to cybersecurity, backups, access
+            control, patching, monitoring and incident response.
+          </p>
         </div>
-    </section>
 
-    <!-- PROJECTS -->
-    <section id="projects">
-        <div>
-            
+        <div class="card">
+          <h3>Automation</h3>
+          <p>
+            Eliminating repetitive work through scripting, automation and
+            better processes — giving IT teams more time to solve problems
+            that actually require people.
+          </p>
         </div>
-    </section>
 
-    <!-- CONTACT -->
-    <section id="contact">
-        <div>
-            
+      </div>
+    </div>
+  </section>
+
+
+  <!-- EXPERIENCE -->
+
+  <section id="experience">
+    <div class="container">
+
+      <div class="section-label">02 / Experience</div>
+
+      <h2 class="section-title">Building reliable systems.</h2>
+
+      <p class="section-intro">
+        A snapshot of the work I do across infrastructure, support,
+        security and school technology.
+      </p>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+
+          <div class="timeline-date">2023 — PRESENT</div>
+
+          <h3>Systems Engineer</h3>
+
+          <div class="timeline-company">
+            Your School / Education Organisation
+          </div>
+
+          <p>
+            Responsible for the day-to-day operation and improvement of
+            school technology infrastructure.
+          </p>
+
+          <br>
+
+          <ul>
+            <li>Manage servers, networking and endpoint infrastructure.</li>
+            <li>Support Microsoft 365 / Entra ID environments.</li>
+            <li>Implement security, patching and backup strategies.</li>
+            <li>Automate repetitive administration and provisioning.</li>
+            <li>Provide technical support across staff and classrooms.</li>
+          </ul>
         </div>
-    </section>
 
-    
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+
+          <div class="timeline-date">PREVIOUS ROLE</div>
+
+          <h3>IT / Systems Administrator</h3>
+
+          <div class="timeline-company">
+            Previous Organisation
+          </div>
+
+          <p>
+            Supported users and infrastructure while helping improve
+            operational efficiency and system reliability.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SCHOOL IMPACT -->
+
+  <section>
+    <div class="container">
+
+      <div class="section-label">03 / Impact</div>
+
+      <h2 class="section-title">Technology with measurable impact.</h2>
+
+      <p class="section-intro">
+        Replace these example figures with numbers from your own
+        environment to show the scale of your work.
+      </p>
+
+      <div class="impact">
+
+        <div class="card stat">
+          <div class="stat-number">1,200+</div>
+          <div class="stat-label">Users Supported</div>
+        </div>
+
+        <div class="card stat">
+          <div class="stat-number">99.9%</div>
+          <div class="stat-label">Infrastructure Uptime</div>
+        </div>
+
+        <div class="card stat">
+          <div class="stat-number">24/7</div>
+          <div class="stat-label">Critical Monitoring</div>
+        </div>
+
+        <div class="card stat">
+          <div class="stat-number">50+</div>
+          <div class="stat-label">Systems Managed</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- PROJECTS -->
+
+  <section id="projects">
+    <div class="container">
+
+      <div class="section-label">04 / Selected Work</div>
+
+      <h2 class="section-title">Things I've built & improved.</h2>
+
+      <p class="section-intro">
+        Use this section to showcase projects without exposing
+        confidential school information.
+      </p>
+
+      <div class="projects">
+
+        <div class="card project">
+          <div class="project-number">PROJECT_01</div>
+
+          <h3>Infrastructure Modernisation</h3>
+
+          <p>
+            Improved server and network infrastructure to increase
+            reliability, performance and visibility across the school.
+          </p>
+
+          <div class="project-tags">
+            <span class="project-tag">NETWORKING</span>
+            <span class="project-tag">SERVERS</span>
+            <span class="project-tag">MONITORING</span>
+          </div>
+        </div>
+
+
+        <div class="card project">
+          <div class="project-number">PROJECT_02</div>
+
+          <h3>Identity & Security</h3>
+
+          <p>
+            Strengthened identity management, access controls and
+            authentication while improving the user experience.
+          </p>
+
+          <div class="project-tags">
+            <span class="project-tag">ENTRA ID</span>
+            <span class="project-tag">MFA</span>
+            <span class="project-tag">SECURITY</span>
+          </div>
+        </div>
+
+
+        <div class="card project">
+          <div class="project-number">PROJECT_03</div>
+
+          <h3>IT Automation</h3>
+
+          <p>
+            Created scripts and automated workflows to reduce manual
+            administration and accelerate common IT tasks.
+          </p>
+
+          <div class="project-tags">
+            <span class="project-tag">POWERSHELL</span>
+            <span class="project-tag">AUTOMATION</span>
+            <span class="project-tag">API</span>
+          </div>
+        </div>
+
+
+        <div class="card project">
+          <div class="project-number">PROJECT_04</div>
+
+          <h3>Endpoint Management</h3>
+
+          <p>
+            Improved deployment, configuration and lifecycle management
+            for staff and student devices.
+          </p>
+
+          <div class="project-tags">
+            <span class="project-tag">INTUNE</span>
+            <span class="project-tag">WINDOWS</span>
+            <span class="project-tag">MDM</span>
+          </div>
+        </div>
+
+
+        <div class="card project">
+          <div class="project-number">PROJECT_05</div>
+
+          <h3>Backup & Disaster Recovery</h3>
+
+          <p>
+            Developed and tested resilient backup processes designed to
+            protect critical school systems and data.
+          </p>
+
+          <div class="project-tags">
+            <span class="project-tag">BACKUP</span>
+            <span class="project-tag">DR</span>
+            <span class="project-tag">BCP</span>
+          </div>
+        </div>
+
+
+        <div class="card project">
+          <div class="project-number">PROJECT_06</div>
+
+          <h3>Classroom Technology</h3>
+
+          <p>
+            Supported reliable classroom technology and created
+            streamlined processes for teachers and support staff.
+          </p>
+
+          <div class="project-tags">
+            <span class="project-tag">EDTECH</span>
+            <span class="project-tag">AV</span>
+            <span class="project-tag">SUPPORT</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SKILLS -->
+
+  <section id="skills">
+    <div class="container">
+
+      <div class="section-label">05 / Toolkit</div>
+
+      <h2 class="section-title">The technology I work with.</h2>
+
+      <p class="section-intro">
+        Replace these with your actual technologies and platforms.
+      </p>
+
+      <div class="skills">
+
+        <span class="skill">WINDOWS SERVER</span>
+        <span class="skill">MICROSOFT 365</span>
+        <span class="skill">ENTRA ID</span>
+        <span class="skill">INTUNE</span>
+        <span class="skill">ACTIVE DIRECTORY</span>
+        <span class="skill">POWERSHELL</span>
+        <span class="skill">PYTHON</span>
+        <span class="skill">VMWARE</span>
+        <span class="skill">HYPER-V</span>
+        <span class="skill">AZURE</span>
+        <span class="skill">NETWORKING</span>
+        <span class="skill">FIREWALLS</span>
+        <span class="skill">CISCO</span>
+        <span class="skill">WI-FI</span>
+        <span class="skill">CYBERSECURITY</span>
+        <span class="skill">BACKUPS</span>
+        <span class="skill">MONITORING</span>
+        <span class="skill">GIT</span>
+        <span class="skill">LINUX</span>
+        <span class="skill">AUTOMATION</span>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+    <div class="container">
+
+      <div class="contact">
+
+        <div class="section-label">06 / Contact</div>
+
+        <h2 class="section-title">
+          Let's build something reliable.
+        </h2>
+
+        <p>
+          Interested in technology, education, infrastructure or
+          solving interesting systems problems? I'd be happy to connect.
+        </p>
+
+        <!-- CHANGE THIS EMAIL -->
+        <a class="contact-email"
+           href="mailto:your.email@example.com">
+          your.email@example.com
+        </a>
+
+        <div class="buttons" style="justify-content:center;">
+
+          <!-- CHANGE THIS LINK -->
+          <a class="button primary"
+             href="https://github.com/"
+             target="_blank">
+            GitHub ↗
+          </a>
+
+          <!-- CHANGE THIS LINK -->
+          <a class="button secondary"
+             href="https://www.linkedin.com/"
+             target="_blank">
+            LinkedIn ↗
+          </a>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+    <div class="container">
+      <span>© 2026 Your Name</span>
+      <span>Systems Engineer · Education Technology</span>
+    </div>
+  </footer>
 
 </body>
 </html>

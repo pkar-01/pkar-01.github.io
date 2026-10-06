@@ -1,2653 +1,888 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>TheScriptingTree | Apple Systems Engineer</title>
-
-  <meta
-    name="description"
-    content="TheScriptingTree — Apple Systems Engineer specialising in Jamf, Apple platforms, automation, scripting and education technology."
-  >
-
-  <meta name="theme-color" content="#080b0a">
-
-  <style>
-    /* =========================================================
-       THE SCRIPTING TREE
-       Apple Systems Engineer Portfolio (TEST)
-       ========================================================= */
-
-    
-
-    :root {
-      --background: #070a09;
-      --background-light: #0d1210;
-      --card: rgba(18, 24, 21, 0.78);
-
-      --text: #f5f7f5;
-      --muted: #9ca8a1;
-      --subtle: #66716b;
-
-      --green: #49d17d;
-      --green-light: #8ff0ae;
-      --green-dark: #1d8f4d;
-
-      --blue: #69b7ff;
-      --purple: #a78bfa;
-
-      --border: rgba(255,255,255,0.09);
-      --border-green: rgba(73,209,125,0.20);
-
-      --glow: rgba(73,209,125,0.15);
-
-      --radius: 16px;
-    }
-
-
-    /* =========================================================
-       RESET
-       ========================================================= */
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family:
-        Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "SF Pro Display",
-        "SF Pro Text",
-        "Segoe UI",
-        sans-serif;
-
-      background:
-        radial-gradient(
-          circle at 15% 5%,
-          rgba(73, 209, 125, 0.10),
-          transparent 28%
-        ),
-        radial-gradient(
-          circle at 90% 20%,
-          rgba(105, 183, 255, 0.08),
-          transparent 28%
-        ),
-        var(--background);
-
-      color: var(--text);
-
-      line-height: 1.6;
-
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-
-      position: fixed;
-
-      inset: 0;
-
-      pointer-events: none;
-
-      opacity: 0.025;
-
-      background-image:
-        linear-gradient(
-          rgba(255,255,255,0.5) 1px,
-          transparent 1px
-        ),
-        linear-gradient(
-          90deg,
-          rgba(255,255,255,0.5) 1px,
-          transparent 1px
-        );
-
-      background-size: 40px 40px;
-
-      mask-image: linear-gradient(
-        to bottom,
-        black,
-        transparent 75%
-      );
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-    }
-
-    .container {
-      width: min(1120px, calc(100% - 40px));
-      margin: 0 auto;
-    }
-
-
-    /* =========================================================
-       NAVIGATION
-       ========================================================= */
-
-    nav {
-      position: fixed;
-
-      top: 0;
-      left: 0;
-
-      width: 100%;
-
-      z-index: 1000;
-
-      background: rgba(7,10,9,0.76);
-
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-inner {
-      height: 72px;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-    }
-
-    .logo {
-      display: flex;
-
-      align-items: center;
-
-      gap: 10px;
-
-      font-family: monospace;
-
-      font-size: 0.95rem;
-
-      font-weight: 700;
-
-      color: var(--text);
-    }
-
-    .logo-icon {
-      color: var(--green);
-
-      font-size: 1.25rem;
-    }
-
-    .logo span {
-      color: var(--green);
-    }
-
-    .nav-links {
-      list-style: none;
-
-      display: flex;
-
-      gap: 28px;
-
-      color: var(--muted);
-
-      font-size: 0.88rem;
-    }
-
-    .nav-links a {
-      transition: color 0.2s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--green-light);
-    }
-
-
-    /* =========================================================
-       HERO
-       ========================================================= */
-
-    .hero {
-      min-height: 100vh;
-
-      display: flex;
-
-      align-items: center;
-
-      padding-top: 72px;
-
-      position: relative;
-    }
-
-    .hero-grid {
-      display: grid;
-
-      grid-template-columns: 1.2fr 0.8fr;
-
-      gap: 80px;
-
-      align-items: center;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-
-      align-items: center;
-
-      gap: 9px;
-
-      margin-bottom: 22px;
-
-      font-family: monospace;
-
-      font-size: 0.78rem;
-
-      letter-spacing: 0.1em;
-
-      color: var(--green);
-
-      text-transform: uppercase;
-    }
-
-    .eyebrow::before {
-      content: "";
-
-      width: 7px;
-      height: 7px;
-
-      border-radius: 50%;
-
-      background: var(--green);
-
-      box-shadow:
-        0 0 10px var(--green);
-    }
-
-    .hero h1 {
-      font-size: clamp(3.5rem, 8vw, 6.8rem);
-
-      line-height: 0.91;
-
-      letter-spacing: -0.075em;
-
-      margin-bottom: 28px;
-    }
-
-    .hero h1 .name {
-      display: block;
-    }
-
-    .hero h1 .role {
-      display: block;
-
-      margin-top: 13px;
-
-      font-size: 0.42em;
-
-      line-height: 1.1;
-
-      letter-spacing: -0.035em;
-
-      color: var(--muted);
-
-      font-weight: 500;
-    }
-
-    .gradient {
-      background:
-        linear-gradient(
-          110deg,
-          var(--green-light),
-          var(--green),
-          #9ae6ff
-        );
-
-      -webkit-background-clip: text;
-      background-clip: text;
-
-      color: transparent;
-    }
-
-    .hero-description {
-      max-width: 650px;
-
-      color: var(--muted);
-
-      font-size: 1.08rem;
-
-      margin-bottom: 32px;
-    }
-
-    .hero-description strong {
-      color: var(--text);
-    }
-
-    .buttons {
-      display: flex;
-
-      gap: 12px;
-
-      flex-wrap: wrap;
-    }
-
-    .button {
-      display: inline-flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      padding: 12px 19px;
-
-      border-radius: 10px;
-
-      border: 1px solid var(--border);
-
-      font-size: 0.88rem;
-
-      transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        border-color 0.2s ease;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-
-      border-color: var(--border-green);
-
-      box-shadow:
-        0 12px 35px rgba(0,0,0,0.25);
-    }
-
-    .button-primary {
-      color: #061009;
-
-      border: none;
-
-      background:
-        linear-gradient(
-          120deg,
-          var(--green-light),
-          var(--green)
-        );
-
-      font-weight: 750;
-    }
-
-    .button-secondary {
-      background: rgba(255,255,255,0.025);
-
-      color: var(--text);
-    }
-
-
-    /* =========================================================
-       TERMINAL
-       ========================================================= */
-
-    .terminal {
-      background:
-        linear-gradient(
-          145deg,
-          rgba(20,28,24,0.95),
-          rgba(8,12,10,0.95)
-        );
-
-      border: 1px solid var(--border);
-
-      border-radius: 17px;
-
-      overflow: hidden;
-
-      box-shadow:
-        0 30px 90px rgba(0,0,0,0.40),
-        0 0 70px rgba(73,209,125,0.04);
-    }
-
-    .terminal-header {
-      display: flex;
-
-      align-items: center;
-
-      gap: 7px;
-
-      padding: 13px 15px;
-
-      border-bottom: 1px solid var(--border);
-
-      background: rgba(255,255,255,0.015);
-    }
-
-    .terminal-dot {
-      width: 10px;
-      height: 10px;
-
-      border-radius: 50%;
-    }
-
-    .terminal-red {
-      background: #ff5f57;
-    }
-
-    .terminal-yellow {
-      background: #febc2e;
-    }
-
-    .terminal-green {
-      background: #28c840;
-    }
-
-    .terminal-title {
-      margin-left: auto;
-      margin-right: auto;
-
-      color: var(--subtle);
-
-      font-family: monospace;
-
-      font-size: 0.7rem;
-    }
-
-    .terminal-body {
-      padding: 26px;
-
-      font-family:
-        "SFMono-Regular",
-        Consolas,
-        "Liberation Mono",
-        monospace;
-
-      font-size: 0.79rem;
-
-      color: #c7d0ca;
-    }
-
-    .terminal-line {
-      margin: 8px 0;
-    }
-
-    .terminal-command {
-      color: var(--green);
-    }
-
-    .terminal-key {
-      color: var(--blue);
-    }
-
-    .terminal-value {
-      color: #d1fae5;
-    }
-
-    .terminal-muted {
-      color: #68736d;
-    }
-
-    .cursor {
-      display: inline-block;
-
-      width: 7px;
-
-      height: 15px;
-
-      background: var(--green);
-
-      vertical-align: middle;
-
-      animation: blink 1s infinite;
-    }
-
-    @keyframes blink {
-      50% {
-        opacity: 0;
-      }
-    }
-
-
-    /* =========================================================
-       SECTIONS
-       ========================================================= */
-
-    section {
-      padding: 115px 0;
-    }
-
-    .section-label {
-      color: var(--green);
-
-      font-family: monospace;
-
-      font-size: 0.72rem;
-
-      letter-spacing: 0.14em;
-
-      text-transform: uppercase;
-
-      margin-bottom: 12px;
-    }
-
-    .section-title {
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
-
-      line-height: 1;
-
-      letter-spacing: -0.055em;
-
-      margin-bottom: 17px;
-    }
-
-    .section-intro {
-      max-width: 690px;
-
-      color: var(--muted);
-
-      margin-bottom: 48px;
-    }
-
-
-    /* =========================================================
-       ABOUT
-       ========================================================= */
-
-    .about-grid {
-      display: grid;
-
-      grid-template-columns: 1fr 1fr;
-
-      gap: 18px;
-    }
-
-    .card {
-      position: relative;
-
-      background:
-        linear-gradient(
-          145deg,
-          rgba(20,27,23,0.80),
-          rgba(12,17,14,0.70)
-        );
-
-      border: 1px solid var(--border);
-
-      border-radius: var(--radius);
-
-      padding: 28px;
-
-      overflow: hidden;
-    }
-
-    .card::after {
-      content: "";
-
-      position: absolute;
-
-      width: 120px;
-      height: 120px;
-
-      top: -70px;
-      right: -60px;
-
-      background: var(--green);
-
-      opacity: 0.04;
-
-      filter: blur(50px);
-
-      border-radius: 50%;
-    }
-
-    .card h3 {
-      font-size: 1.05rem;
-
-      margin-bottom: 10px;
-    }
-
-    .card p {
-      color: var(--muted);
-
-      font-size: 0.91rem;
-    }
-
-    .card-icon {
-      font-size: 1.4rem;
-
-      margin-bottom: 18px;
-
-      color: var(--green);
-    }
-
-
-    /* =========================================================
-       APPLE ECOSYSTEM
-       ========================================================= */
-
-    .ecosystem {
-      display: grid;
-
-      grid-template-columns:
-        repeat(4, 1fr);
-
-      gap: 12px;
-    }
-
-    .eco-item {
-      padding: 24px 20px;
-
-      text-align: center;
-
-      border: 1px solid var(--border);
-
-      background: rgba(255,255,255,0.018);
-
-      border-radius: 14px;
-
-      transition:
-        transform 0.2s ease,
-        border-color 0.2s ease;
-    }
-
-    .eco-item:hover {
-      transform: translateY(-4px);
-
-      border-color: var(--border-green);
-    }
-
-    .eco-icon {
-      font-size: 1.7rem;
-
-      margin-bottom: 12px;
-    }
-
-    .eco-item h3 {
-      font-size: 0.9rem;
-
-      margin-bottom: 5px;
-    }
-
-    .eco-item p {
-      color: var(--muted);
-
-      font-size: 0.72rem;
-    }
-
-
-    /* =========================================================
-       EXPERIENCE
-       ========================================================= */
-
-    .timeline {
-      position: relative;
-
-      max-width: 880px;
-    }
-
-    .timeline::before {
-      content: "";
-
-      position: absolute;
-
-      top: 0;
-      bottom: 0;
-
-      left: 7px;
-
-      width: 1px;
-
-      background:
-        linear-gradient(
-          var(--green),
-          rgba(73,209,125,0)
-        );
-    }
-
-    .timeline-item {
-      position: relative;
-
-      padding-left: 42px;
-
-      margin-bottom: 60px;
-    }
-
-    .timeline-dot {
-      position: absolute;
-
-      left: 1px;
-
-      top: 5px;
-
-      width: 13px;
-      height: 13px;
-
-      border-radius: 50%;
-
-      background: var(--green);
-
-      box-shadow:
-        0 0 0 4px rgba(73,209,125,0.07),
-        0 0 20px rgba(73,209,125,0.30);
-    }
-
-    .timeline-date {
-      color: var(--green);
-
-      font-family: monospace;
-
-      font-size: 0.72rem;
-
-      letter-spacing: 0.08em;
-
-      margin-bottom: 7px;
-    }
-
-    .timeline h3 {
-      font-size: 1.3rem;
-    }
-
-    .timeline-company {
-      color: var(--blue);
-
-      font-size: 0.9rem;
-
-      margin-bottom: 12px;
-    }
-
-    .timeline p,
-    .timeline li {
-      color: var(--muted);
-
-      font-size: 0.9rem;
-    }
-
-    .timeline ul {
-      padding-left: 18px;
-
-      margin-top: 12px;
-    }
-
-    .timeline li {
-      margin-bottom: 5px;
-    }
-
-
-    /* =========================================================
-       PROJECTS
-       ========================================================= */
-
-    .projects {
-      display: grid;
-
-      grid-template-columns:
-        repeat(3, 1fr);
-
-      gap: 16px;
-    }
-
-    .project {
-      min-height: 285px;
-
-      display: flex;
-
-      flex-direction: column;
-    }
-
-    .project-number {
-      color: var(--subtle);
-
-      font-family: monospace;
-
-      font-size: 0.68rem;
-
-      margin-bottom: 25px;
-    }
-
-    .project h3 {
-      font-size: 1.05rem;
-
-      margin-bottom: 9px;
-    }
-
-    .project p {
-      color: var(--muted);
-
-      font-size: 0.85rem;
-    }
-
-    .project-tags {
-      display: flex;
-
-      flex-wrap: wrap;
-
-      gap: 7px;
-
-      margin-top: auto;
-
-      padding-top: 25px;
-    }
-
-    .project-tag {
-      padding: 5px 8px;
-
-      border-radius: 5px;
-
-      border: 1px solid rgba(73,209,125,0.12);
-
-      color: var(--green-light);
-
-      background: rgba(73,209,125,0.035);
-
-      font-family: monospace;
-
-      font-size: 0.62rem;
-    }
-
-
-    /* =========================================================
-       AUTOMATION / SCRIPTING
-       ========================================================= */
-
-    .code-section {
-      display: grid;
-
-      grid-template-columns: 0.85fr 1.15fr;
-
-      gap: 25px;
-
-      align-items: stretch;
-    }
-
-    .code-intro {
-      display: flex;
-
-      flex-direction: column;
-
-      justify-content: center;
-    }
-
-    .code-window {
-      border-radius: 14px;
-
-      overflow: hidden;
-
-      border: 1px solid var(--border);
-
-      background: #090d0b;
-    }
-
-    .code-header {
-      display: flex;
-
-      gap: 7px;
-
-      padding: 12px 14px;
-
-      border-bottom: 1px solid var(--border);
-    }
-
-    .code-body {
-      padding: 25px;
-
-      overflow-x: auto;
-
-      font-family: monospace;
-
-      font-size: 0.77rem;
-
-      line-height: 1.8;
-
-      color: #d1d5db;
-    }
-
-    .code-comment {
-      color: #617068;
-    }
-
-    .code-keyword {
-      color: #c084fc;
-    }
-
-    .code-function {
-      color: #67e8f9;
-    }
-
-    .code-string {
-      color: #86efac;
-    }
-
-    .code-variable {
-      color: #93c5fd;
-    }
-
-
-    /* =========================================================
-       SKILLS
-       ========================================================= */
-
-    .skills {
-      display: flex;
-
-      flex-wrap: wrap;
-
-      gap: 9px;
-    }
-
-    .skill {
-      padding: 9px 12px;
-
-      border-radius: 7px;
-
-      border: 1px solid var(--border);
-
-      background: rgba(255,255,255,0.018);
-
-      color: #cdd5d0;
-
-      font-family: monospace;
-
-      font-size: 0.71rem;
-
-      transition:
-        color 0.2s ease,
-        border-color 0.2s ease,
-        background 0.2s ease;
-    }
-
-    .skill:hover {
-      color: var(--green-light);
-
-      border-color: var(--border-green);
-
-      background: rgba(73,209,125,0.04);
-    }
-
-
-    /* =========================================================
-       IMPACT
-       ========================================================= */
-
-    .impact {
-      display: grid;
-
-      grid-template-columns:
-        repeat(4, 1fr);
-
-      gap: 13px;
-    }
-
-    .stat {
-      text-align: center;
-
-      padding: 30px 15px;
-    }
-
-    .stat-number {
-      font-size: 2.25rem;
-
-      font-weight: 800;
-
-      letter-spacing: -0.05em;
-
-      background:
-        linear-gradient(
-          110deg,
-          var(--green-light),
-          var(--green)
-        );
-
-      -webkit-background-clip: text;
-
-      color: transparent;
-    }
-
-    .stat-label {
-      color: var(--muted);
-
-      font-size: 0.76rem;
-    }
-
-
-    /* =========================================================
-       CONTACT
-       ========================================================= */
-
-    .contact {
-      max-width: 760px;
-
-      margin: auto;
-
-      text-align: center;
-    }
-
-    .contact .section-intro {
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .contact-email {
-      display: inline-block;
-
-      color: var(--green-light);
-
-      font-family: monospace;
-
-      margin-bottom: 28px;
-
-      border-bottom: 1px dashed
-        rgba(143,240,174,0.4);
-    }
-
-    .contact-email:hover {
-      color: white;
-    }
-
-
-    /* =========================================================
-       FOOTER
-       ========================================================= */
-
-    footer {
-      border-top: 1px solid var(--border);
-
-      padding: 26px 0;
-
-      color: var(--subtle);
-
-      font-size: 0.72rem;
-
-      font-family: monospace;
-    }
-
-    footer .container {
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      gap: 20px;
-    }
-
-    .footer-tree {
-      color: var(--green);
-    }
-
-
-    /* =========================================================
-       RESPONSIVE
-       ========================================================= */
-
-    @media (max-width: 900px) {
-
-      .hero-grid {
-        grid-template-columns: 1fr;
-
-        gap: 50px;
-      }
-
-      .hero {
-        padding-top: 120px;
-      }
-
-      .terminal {
-        max-width: 650px;
-      }
-
-      .ecosystem {
-        grid-template-columns:
-          repeat(2, 1fr);
-      }
-
-      .projects {
-        grid-template-columns:
-          repeat(2, 1fr);
-      }
-
-      .code-section {
-        grid-template-columns: 1fr;
-      }
-    }
-
-
-    @media (max-width: 700px) {
-
-      .nav-links {
-        display: none;
-      }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .projects {
-        grid-template-columns: 1fr;
-      }
-
-      .impact {
-        grid-template-columns:
-          repeat(2, 1fr);
-      }
-
-      .hero h1 {
-        font-size: 3.6rem;
-      }
-
-      section {
-        padding: 80px 0;
-      }
-    }
-
-
-    @media (max-width: 450px) {
-
-      .container {
-        width: min(100% - 28px, 1120px);
-      }
-
-      .hero h1 {
-        font-size: 3rem;
-      }
-
-      .ecosystem {
-        grid-template-columns: 1fr;
-      }
-
-      .impact {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      footer .container {
-        flex-direction: column;
-
-        align-items: flex-start;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheScriptingTree | Apple Platform & Systems Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                    colors: {
+                        apple: {
+                            bg: '#0a0a0c',
+                            card: '#121217',
+                            cardHover: '#1a1a22',
+                            border: 'rgba(255, 255, 255, 0.08)',
+                            blue: '#2997ff',
+                            green: '#30d158',
+                            purple: '#bf5af2',
+                            orange: '#ff9f0a',
+                            red: '#ff453a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom styling for glassmorphism and animations */
+        .glass-panel {
+            background: rgba(18, 18, 23, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card {
+            background: rgba(22, 22, 29, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-card:hover {
+            border-color: rgba(41, 151, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+        /* Custom scrollbar for terminal */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 3px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        /* Glowing effects */
+        .glow-blue {
+            box-shadow: 0 0 25px -5px rgba(41, 151, 255, 0.25);
+        }
+        .glow-green {
+            box-shadow: 0 0 25px -5px rgba(48, 209, 88, 0.25);
+        }
+        @keyframes pulse-slow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.7; }
+        }
+        .animate-pulse-slow {
+            animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
 </head>
-
-
-<body>
-
-
-  <!-- =======================================================
-       NAVIGATION
-       ======================================================= -->
-
-  <nav>
-
-    <div class="container nav-inner">
-
-      <a href="#" class="logo">
-
-        <span class="logo-icon">⌘</span>
-
-        The<span>Scripting</span>Tree
-
-      </a>
-
-      <ul class="nav-links">
-
-        <li>
-          <a href="#about">About</a>
-        </li>
-
-        <li>
-          <a href="#apple">Apple</a>
-        </li>
-
-        <li>
-          <a href="#experience">Experience</a>
-        </li>
-
-        <li>
-          <a href="#projects">Projects</a>
-        </li>
-
-        <li>
-          <a href="#automation">Automation</a>
-        </li>
-
-        <li>
-          <a href="#contact">Contact</a>
-        </li>
-
-      </ul>
-
-    </div>
-
-  </nav>
-
-
-  <!-- =======================================================
-       HERO
-       ======================================================= -->
-
-  <header class="hero">
-
-    <div class="container hero-grid">
-
-
-      <div>
-
-        <div class="eyebrow">
-          Apple Systems Engineer · Education
-        </div>
-
-
-        <h1>
-
-          <span class="name">
-            The<span class="gradient">Scripting</span>Tree
-          </span>
-
-          <span class="role">
-            Apple Systems Engineer · Automation · Infrastructure
-          </span>
-
-        </h1>
-
-
-        <p class="hero-description">
-
-          I build, automate and maintain Apple technology environments
-          that <strong>just work</strong> — helping schools provide
-          reliable technology for teachers, students and staff.
-
-        </p>
-
-
-        <div class="buttons">
-
-          <a
-            href="#projects"
-            class="button button-primary"
-          >
-            Explore my work →
-          </a>
-
-          <a
-            href="#contact"
-            class="button button-secondary"
-          >
-            Get in touch
-          </a>
-
-        </div>
-
-      </div>
-
-
-      <!-- TERMINAL -->
-
-      <div class="terminal">
-
-        <div class="terminal-header">
-
-          <span class="terminal-dot terminal-red"></span>
-
-          <span class="terminal-dot terminal-yellow"></span>
-
-          <span class="terminal-dot terminal-green"></span>
-
-          <span class="terminal-title">
-            thescriptingtree — zsh
-          </span>
-
-        </div>
-
-
-        <div class="terminal-body">
-
-          <div class="terminal-line">
-
-            <span class="terminal-command">
-              thescriptingtree@school-it
-            </span>:~$
-
-            whoami
-
-          </div>
-
-
-          <div class="terminal-line">
-
-            <span class="terminal-value">
-              TheScriptingTree
-            </span>
-
-          </div>
-
-
-          <br>
-
-
-          <div class="terminal-line">
-
-            <span class="terminal-key">
-              role
-            </span>
-
-            →
-
-            <span class="terminal-value">
-              Apple Systems Engineer
-            </span>
-
-          </div>
-
-
-          <div class="terminal-line">
-
-            <span class="terminal-key">
-              environment
-            </span>
-
-            →
-
-            <span class="terminal-value">
-              Education
-            </span>
-
-          </div>
-
-
-          <div class="terminal-line">
-
-            <span class="terminal-key">
-              speciality
-            </span>
-
-            →
-
-            <span class="terminal-value">
-              Jamf + Apple Platforms
-            </span>
-
-          </div>
-
-
-          <div class="terminal-line">
-
-            <span class="terminal-key">
-              automation
-            </span>
-
-            →
-
-            <span class="terminal-value">
-              Bash · Zsh · Python
-            </span>
-
-          </div>
-
-
-          <div class="terminal-line">
-
-            <span class="terminal-key">
-              mission
-            </span>
-
-            →
-
-            <span class="terminal-value">
-              Make IT boring.
-            </span>
-
-          </div>
-
-
-          <div class="terminal-line">
-
-            <span class="terminal-key">
-              philosophy
-            </span>
-
-            →
-
-            <span class="terminal-value">
-              Make classrooms work.
-            </span>
-
-          </div>
-
-
-          <br>
-
-
-          <div class="terminal-line">
-
-            <span class="terminal-muted">
-              $ systemctl status everything
-            </span>
-
-          </div>
-
-
-          <div class="terminal-line">
-
-            <span class="terminal-key">
-              ● infrastructure:
-            </span>
-
-            <span class="terminal-value">
-              operational
-            </span>
-
-          </div>
-
-
-          <div class="terminal-line">
-
-            <span class="terminal-key">
-              ● automation:
-            </span>
-
-            <span class="terminal-value">
-              running
-            </span>
-
-          </div>
-
-
-          <div class="terminal-line">
-
-            <span class="terminal-key">
-              ● coffee:
-            </span>
-
-            <span class="terminal-value">
-              required
-            </span>
-
-          </div>
-
-
-          <br>
-
-
-          <div class="terminal-line">
-
-            <span class="terminal-command">
-              $
-            </span>
-
-            <span class="cursor"></span>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </header>
-
-
-  <!-- =======================================================
-       ABOUT
-       ======================================================= -->
-
-  <section id="about">
-
-    <div class="container">
-
-      <div class="section-label">
-        01 / About the Tree
-      </div>
-
-
-      <h2 class="section-title">
-        Technology behind the classroom.
-      </h2>
-
-
-      <p class="section-intro">
-
-        Schools rely on technology for almost everything.
-        My job is to make that technology reliable, secure,
-        manageable and — when possible — completely invisible.
-
-      </p>
-
-
-      <div class="about-grid">
-
-
-        <div class="card">
-
-          <div class="card-icon">
-            
-          </div>
-
-          <h3>
-            Apple at Scale
-          </h3>
-
-          <p>
-
-            Managing Apple devices across education environments,
-            from deployment and configuration through to ongoing
-            management, troubleshooting and lifecycle planning.
-
-          </p>
-
-        </div>
-
-
-        <div class="card">
-
-          <div class="card-icon">
-            ◈
-          </div>
-
-          <h3>
-            Jamf Management
-          </h3>
-
-          <p>
-
-            Using Jamf to turn fleets of Macs and iPads into
-            predictable, secure and manageable platforms for
-            teachers, students and administrators.
-
-          </p>
-
-        </div>
-
-
-        <div class="card">
-
-          <div class="card-icon">
-            &gt;_
-          </div>
-
-          <h3>
-            Automation & Scripting
-          </h3>
-
-          <p>
-
-            Writing scripts and building automation to eliminate
-            repetitive administration, solve problems at scale
-            and make IT operations more efficient.
-
-          </p>
-
-        </div>
-
-
-        <div class="card">
-
-          <div class="card-icon">
-            ⌁
-          </div>
-
-          <h3>
-            Education Technology
-          </h3>
-
-          <p>
-
-            Supporting the people who actually use technology:
-            students, teachers and staff. Good IT should enable
-            education rather than get in its way.
-
-          </p>
-
-        </div>
-
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =======================================================
-       APPLE ECOSYSTEM
-       ======================================================= -->
-
-  <section id="apple">
-
-    <div class="container">
-
-      <div class="section-label">
-        02 / Apple Ecosystem
-      </div>
-
-
-      <h2 class="section-title">
-        Deep in the Apple ecosystem.
-      </h2>
-
-
-      <p class="section-intro">
-
-        The technologies and platforms that make up a modern
-        Apple-focused education environment.
-
-      </p>
-
-
-      <div class="ecosystem">
-
-
-        <div class="eco-item">
-
-          <div class="eco-icon">
-            
-          </div>
-
-          <h3>
-            macOS
-          </h3>
-
-          <p>
-            Deployment · Configuration · Support
-          </p>
-
-        </div>
-
-
-        <div class="eco-item">
-
-          <div class="eco-icon">
-            ▣
-          </div>
-
-          <h3>
-            iPadOS
-          </h3>
-
-          <p>
-            Student devices · Restrictions · Apps
-          </p>
-
-        </div>
-
-
-        <div class="eco-item">
-
-          <div class="eco-icon">
-            ◈
-          </div>
-
-          <h3>
-            Jamf
-          </h3>
-
-          <p>
-            MDM · Policies · Profiles · Automation
-          </p>
-
-        </div>
-
-
-        <div class="eco-item">
-
-          <div class="eco-icon">
-            ☁
-          </div>
-
-          <h3>
-            Apple School Manager
-          </h3>
-
-          <p>
-            Devices · Accounts · Apps · Education
-          </p>
-
-        </div>
-
-
-        <div class="eco-item">
-
-          <div class="eco-icon">
-            &lt;/&gt;
-          </div>
-
-          <h3>
-            AppleScript
-          </h3>
-
-          <p>
-            Workflow automation
-          </p>
-
-        </div>
-
-
-        <div class="eco-item">
-
-          <div class="eco-icon">
-            $
-          </div>
-
-          <h3>
-            Shell
-          </h3>
-
-          <p>
-            Bash · Zsh · CLI automation
-          </p>
-
-        </div>
-
-
-        <div class="eco-item">
-
-          <div class="eco-icon">
-            🐍
-          </div>
-
-          <h3>
-            Python
-          </h3>
-
-          <p>
-            APIs · Automation · Tooling
-          </p>
-
-        </div>
-
-
-        <div class="eco-item">
-
-          <div class="eco-icon">
-            ⚙
-          </div>
-
-          <h3>
-            APIs
-          </h3>
-
-          <p>
-            Integrations · Automation · Data
-          </p>
-
-        </div>
-
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =======================================================
-       EXPERIENCE
-       ======================================================= -->
-
-  <section id="experience">
-
-    <div class="container">
-
-      <div class="section-label">
-        03 / Experience
-      </div>
-
-
-      <h2 class="section-title">
-        Keeping the school running.
-      </h2>
-
-
-      <p class="section-intro">
-
-        A snapshot of the work behind the scenes — managing
-        infrastructure, devices, systems and the technology
-        used every day across an education environment.
-
-      </p>
-
-
-      <div class="timeline">
-
-
-        <div class="timeline-item">
-
-          <div class="timeline-dot"></div>
-
-
-          <div class="timeline-date">
-            2023 — PRESENT
-          </div>
-
-
-          <h3>
-            Apple Systems Engineer
-          </h3>
-
-
-          <div class="timeline-company">
-            Your School / Education Organisation
-          </div>
-
-
-          <p>
-
-            Responsible for the administration, automation and
-            ongoing improvement of Apple technology across the
-            school environment.
-
-          </p>
-
-
-          <ul>
-
-            <li>
-              Manage Apple devices using Jamf.
-            </li>
-
-            <li>
-              Configure macOS and iPadOS deployments.
-            </li>
-
-            <li>
-              Develop scripts and automation for IT operations.
-            </li>
-
-            <li>
-              Manage applications, configuration profiles and policies.
-            </li>
-
-            <li>
-              Troubleshoot complex Apple platform issues.
-            </li>
-
-            <li>
-              Support teachers, students and administrative staff.
-            </li>
-
-            <li>
-              Improve security, reliability and device compliance.
-            </li>
-
-          </ul>
-
-        </div>
-
-
-        <div class="timeline-item">
-
-          <div class="timeline-dot"></div>
-
-
-          <div class="timeline-date">
-            PREVIOUS ROLE
-          </div>
-
-
-          <h3>
-            IT / Systems Administrator
-          </h3>
-
-
-          <div class="timeline-company">
-            Previous Organisation
-          </div>
-
-
-          <p>
-
-            Supported users, infrastructure and technology
-            operations while developing a growing focus on
-            Apple administration and automation.
-
-          </p>
-
-        </div>
-
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =======================================================
-       PROJECTS
-       ======================================================= -->
-
-  <section id="projects">
-
-    <div class="container">
-
-      <div class="section-label">
-        04 / Selected Work
-      </div>
-
-
-      <h2 class="section-title">
-        Things I've built & improved.
-      </h2>
-
-
-      <p class="section-intro">
-
-        Showcase real projects here. Keep school names,
-        infrastructure details and sensitive information
-        private where necessary.
-
-      </p>
-
-
-      <div class="projects">
-
-
-        <div class="card project">
-
-          <div class="project-number">
-            PROJECT_01
-          </div>
-
-          <h3>
-            Jamf Fleet Management
-          </h3>
-
-          <p>
-
-            Designed and maintained Jamf workflows for managing
-            a large fleet of Apple devices, improving consistency
-            and reducing manual administration.
-
-          </p>
-
-          <div class="project-tags">
-
-            <span class="project-tag">
-              JAMF
-            </span>
-
-            <span class="project-tag">
-              MDM
-            </span>
-
-            <span class="project-tag">
-              MACOS
-            </span>
-
-          </div>
-
-        </div>
-
-
-        <div class="card project">
-
-          <div class="project-number">
-            PROJECT_02
-          </div>
-
-          <h3>
-            Automated Mac Deployment
-          </h3>
-
-          <p>
-
-            Streamlined the deployment and configuration of
-            Macs using automated enrolment, configuration
-            profiles, policies and scripts.
-
-          </p>
-
-          <div class="project-tags">
-
-            <span class="project-tag">
-              JAMF
-            </span>
-
-            <span class="project-tag">
-              DEP
-            </span>
-
-            <span class="project-tag">
-              AUTOMATION
-            </span>
-
-          </div>
-
-        </div>
-
-
-        <div class="card project">
-
-          <div class="project-number">
-            PROJECT_03
-          </div>
-
-          <h3>
-            The Script Library
-          </h3>
-
-          <p>
-
-            A collection of reusable shell and Python tools
-            designed to solve common Mac administration and
-            education IT problems.
-
-          </p>
-
-          <div class="project-tags">
-
-            <span class="project-tag">
-              BASH
-            </span>
-
-            <span class="project-tag">
-              ZSH
-            </span>
-
-            <span class="project-tag">
-              PYTHON
-            </span>
-
-          </div>
-
-        </div>
-
-
-        <div class="card project">
-
-          <div class="project-number">
-            PROJECT_04
-          </div>
-
-          <h3>
-            Application Management
-          </h3>
-
-          <p>
-
-            Built repeatable workflows for packaging, deploying
-            and maintaining applications across managed Apple
-            devices.
-
-          </p>
-
-          <div class="project-tags">
-
-            <span class="project-tag">
-              PKG
-            </span>
-
-            <span class="project-tag">
-              JAMF
-            </span>
-
-            <span class="project-tag">
-              MACOS
-            </span>
-
-          </div>
-
-        </div>
-
-
-        <div class="card project">
-
-          <div class="project-number">
-            PROJECT_05
-          </div>
-
-          <h3>
-            Device Lifecycle
-          </h3>
-
-          <p>
-
-            Improved workflows for device provisioning,
-            maintenance, replacement and retirement across
-            the Apple fleet.
-
-          </p>
-
-          <div class="project-tags">
-
-            <span class="project-tag">
-              MDM
-            </span>
-
-            <span class="project-tag">
-              ASM
-            </span>
-
-            <span class="project-tag">
-              LIFECYCLE
-            </span>
-
-          </div>
-
-        </div>
-
-
-        <div class="card project">
-
-          <div class="project-number">
-            PROJECT_06
-          </div>
-
-          <h3>
-            Classroom Technology
-          </h3>
-
-          <p>
-
-            Supporting reliable Apple technology in classrooms,
-            ensuring teachers and students can focus on learning
-            instead of troubleshooting.
-
-          </p>
-
-          <div class="project-tags">
-
-            <span class="project-tag">
-              EDTECH
-            </span>
-
-            <span class="project-tag">
-              APPLE
-            </span>
-
-            <span class="project-tag">
-              SUPPORT
-            </span>
-
-          </div>
-
-        </div>
-
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =======================================================
-       AUTOMATION
-       ======================================================= -->
-
-  <section id="automation">
-
-    <div class="container">
-
-      <div class="code-section">
-
-
-        <div class="code-intro">
-
-          <div class="section-label">
-            05 / Automation
-          </div>
-
-
-          <h2 class="section-title">
-            If I do it twice,
-            I script it.
-          </h2>
-
-
-          <p class="section-intro">
-
-            Automation is one of the most powerful tools in
-            systems administration. I use scripting to turn
-            repetitive tasks into reliable, repeatable workflows.
-
-          </p>
-
-
-          <div class="skills">
-
-            <span class="skill">
-              Bash
-            </span>
-
-            <span class="skill">
-              Zsh
-            </span>
-
-            <span class="skill">
-              Python
-            </span>
-
-            <span class="skill">
-              AppleScript
-            </span>
-
-            <span class="skill">
-              Jamf API
-            </span>
-
-            <span class="skill">
-              REST APIs
-            </span>
-
-            <span class="skill">
-              JSON
-            </span>
-
-            <span class="skill">
-              Git
-            </span>
-
-          </div>
-
-        </div>
-
-
-        <div class="code-window">
-
-          <div class="code-header">
-
-            <span class="terminal-dot terminal-red"></span>
-
-            <span class="terminal-dot terminal-yellow"></span>
-
-            <span class="terminal-dot terminal-green"></span>
-
-          </div>
-
-
-          <div class="code-body">
-
-            <div>
-              <span class="code-comment">
-                # Example: automate a common task
-              </span>
+<body class="bg-apple-bg text-gray-200 font-sans antialiased selection:bg-apple-blue selection:text-white min-h-screen flex flex-col justify-between">
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-apple-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-apple-blue to-apple-purple p-0.5 flex items-center justify-center transition-transform group-hover:scale-105">
+                    <div class="w-full h-full bg-apple-bg rounded-[10px] flex items-center justify-center">
+                        <svg class="w-5 h-5 text-apple-blue group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-mono font-bold text-lg text-white tracking-tight flex items-center gap-1.5">
+                        TheScriptingTree
+                        <span class="inline-block w-2 h-2 rounded-full bg-apple-green animate-pulse"></span>
+                    </span>
+                    <span class="text-[10px] font-mono text-gray-400">Apple & Systems Engineering</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-300">
+                <a href="#about" class="hover:text-apple-blue transition-colors">About</a>
+                <a href="#competencies" class="hover:text-apple-blue transition-colors">Stack</a>
+                <a href="#sandbox" class="hover:text-apple-blue transition-colors flex items-center gap-1">
+                    <span class="text-xs bg-apple-blue/10 text-apple-blue px-2 py-0.5 rounded-full font-mono border border-apple-blue/20">CLI</span>
+                    Sandbox
+                </a>
+                <a href="#projects" class="hover:text-apple-blue transition-colors">Projects</a>
+                <a href="#til" class="hover:text-apple-blue transition-colors">TIL / Posts</a>
+            </nav>
+
+            <!-- Action Button -->
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="#contact" class="px-4 py-2 text-xs font-semibold rounded-lg bg-white/10 hover:bg-white/20 text-white border border-white/10 transition-all flex items-center gap-2">
+                    <svg class="w-4 h-4 text-apple-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                    Get in Touch
+                </a>
             </div>
 
-
-            <div>
-              <span class="code-keyword">
-                #!/bin/zsh
-              </span>
-            </div>
-
-
-            <br>
-
-
-            <div>
-
-              <span class="code-variable">
-                JAMF
-              </span>
-              =<span class="code-string">
-                "/usr/local/bin/jamf"
-              </span>
-
-            </div>
-
-
-            <br>
-
-
-            <div>
-
-              <span class="code-comment">
-                # Gather device information
-              </span>
-
-            </div>
-
-
-            <div>
-
-              <span class="code-variable">
-                serial
-              </span>=<span class="code-string">
-                $(system_profiler SPHardwareDataType |
-                awk '/Serial/ {print $4}')
-              </span>
-
-            </div>
-
-
-            <br>
-
-
-            <div>
-
-              <span class="code-comment">
-                # Update management inventory
-              </span>
-
-            </div>
-
-
-            <div>
-
-              <span class="code-variable">
-                $JAMF
-              </span>
-              recon
-
-            </div>
-
-
-            <br>
-
-
-            <div>
-
-              <span class="code-comment">
-                # One less thing to do manually.
-              </span>
-
-            </div>
-
-
-            <br>
-
-
-            <div>
-
-              <span class="code-function">
-                echo
-              </span>
-
-              <span class="code-string">
-                "The tree keeps growing."
-              </span>
-
-            </div>
-
-          </div>
-
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+                </svg>
+            </button>
         </div>
 
-      </div>
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="hidden md:hidden px-4 pt-2 pb-6 space-y-3 glass-panel border-t border-apple-border">
+            <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-white/5">About</a>
+            <a href="#competencies" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-white/5">Stack & Skills</a>
+            <a href="#sandbox" class="block px-3 py-2 rounded-md text-base font-medium text-apple-blue hover:bg-white/5">Interactive Terminal</a>
+            <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-white/5">Projects</a>
+            <a href="#til" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-white/5">TIL / Posts</a>
+            <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-apple-green hover:bg-white/5">Contact</a>
+        </div>
+    </header>
 
+    <main class="space-y-24 py-12">
+        <!-- Hero Section -->
+        <section id="about" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <!-- Background Glows -->
+            <div class="absolute -top-12 left-1/4 w-96 h-96 bg-apple-blue/10 rounded-full blur-3xl pointer-events-none animate-pulse-slow"></div>
+            <div class="absolute top-1/2 right-10 w-80 h-80 bg-apple-purple/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Hero Left Column Text -->
+                <div class="lg:col-span-7 space-y-6">
+                    <!-- Location / Status Badge -->
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-panel border border-apple-border text-xs font-mono text-gray-300">
+                        <span class="w-2 h-2 rounded-full bg-apple-green"></span>
+                        <span>Sydney, Australia</span>
+                        <span class="text-gray-600">|</span>
+                        <span class="text-apple-blue">Jamf & Apple Platform Specialist</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-[1.1]">
+                        Automating the <span class="bg-gradient-to-r from-apple-blue via-apple-purple to-apple-green bg-clip-text text-transparent">Apple Enterprise</span> Environment.
+                    </h1>
+
+                    <p class="text-lg text-gray-400 leading-relaxed max-w-2xl">
+                        Systems Engineer based in Sydney, Australia specializing in large-scale macOS & iOS management, Jamf Pro/School architecture, Zsh/Python workflow automation, and Zero-Touch deployment pipelines.
+                    </p>
+
+                    <!-- Tech Stack Pill Highlights -->
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="px-3 py-1 rounded-md text-xs font-mono bg-white/5 border border-white/10 text-gray-300">Jamf Pro / School</span>
+                        <span class="px-3 py-1 rounded-md text-xs font-mono bg-white/5 border border-white/10 text-gray-300">Declarative Device Mgmt (DDM)</span>
+                        <span class="px-3 py-1 rounded-md text-xs font-mono bg-white/5 border border-white/10 text-gray-300">Bash / Zsh</span>
+                        <span class="px-3 py-1 rounded-md text-xs font-mono bg-white/5 border border-white/10 text-gray-300">Python 3 API Tooling</span>
+                        <span class="px-3 py-1 rounded-md text-xs font-mono bg-white/5 border border-white/10 text-gray-300">SwiftDialog & Setup Assistant</span>
+                        <span class="px-3 py-1 rounded-md text-xs font-mono bg-white/5 border border-white/10 text-gray-300">AutoPkg Pipelines</span>
+                    </div>
+
+                    <!-- Call to action buttons -->
+                    <div class="flex flex-wrap items-center gap-4 pt-4">
+                        <a href="#sandbox" class="px-6 py-3 rounded-xl bg-apple-blue hover:bg-blue-600 text-white font-semibold text-sm transition-all glow-blue flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            Run Demo Scripts
+                        </a>
+                        <a href="#projects" class="px-6 py-3 rounded-xl glass-panel hover:bg-white/10 text-gray-200 font-semibold text-sm border border-apple-border transition-all flex items-center gap-2">
+                            View Repos & Tooling
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Right Column: Interactive Terminal Preview -->
+                <div class="lg:col-span-5">
+                    <div class="rounded-2xl glass-panel border border-apple-border overflow-hidden shadow-2xl">
+                        <!-- Terminal Titlebar -->
+                        <div class="bg-black/40 px-4 py-3 flex items-center justify-between border-b border-apple-border">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 rounded-full bg-apple-red"></div>
+                                <div class="w-3 h-3 rounded-full bg-apple-orange"></div>
+                                <div class="w-3 h-3 rounded-full bg-apple-green"></div>
+                            </div>
+                            <span class="font-mono text-xs text-gray-400">pkar-01@sydney-macbook ~ zsh</span>
+                            <div class="text-xs font-mono text-apple-blue">v2.4.0</div>
+                        </div>
+
+                        <!-- Terminal Body -->
+                        <div class="p-5 font-mono text-xs sm:text-sm space-y-3 bg-black/60 min-h-[300px] custom-scrollbar overflow-x-auto">
+                            <div>
+                                <span class="text-apple-green">pkar-01@sydney-macbook</span>:<span class="text-apple-blue">~</span>$ jamf ProHealthCheck --target school-fleet
+                            </div>
+                            <div class="text-gray-400 pl-2">
+                                [i] Querying Jamf Pro Classic & Pro APIs...<br>
+                                [✓] Apple School Manager Token: <span class="text-apple-green">Valid (Expires in 294 days)</span><br>
+                                [✓] APNs Push Certificate: <span class="text-apple-green">Active</span><br>
+                                [✓] Managed Devices: <span class="text-apple-blue">2,450 Mac & iPad Endpoints</span><br>
+                                [✓] Declarative Device Management (DDM): <span class="text-apple-purple">Enforced</span>
+                            </div>
+
+                            <div class="pt-2">
+                                <span class="text-apple-green">pkar-01@sydney-macbook</span>:<span class="text-apple-blue">~</span>$ ./swift-dialog-onboarding.sh --debug
+                            </div>
+                            <div class="text-gray-400 pl-2 border-l-2 border-apple-blue/50 my-1 py-1">
+                                <span class="text-apple-orange">[Dialog]</span> Launching SwiftDialog 2.5...<br>
+                                <span class="text-apple-orange">[Dialog]</span> Installing Rosetta 2, Nudge, Self Service...<br>
+                                <span class="text-apple-green">[Success]</span> Provisioning Complete. Zero Touch Delivered!
+                            </div>
+
+                            <div class="pt-2 flex items-center gap-1 text-gray-300">
+                                <span class="text-apple-green">pkar-01@sydney-macbook</span>:<span class="text-apple-blue">~</span>$&nbsp;
+                                <span id="heroTypingText" class="text-white border-r-2 border-apple-blue pr-1 animate-pulse">echo "Built for Scale"</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Competencies Grid -->
+        <section id="competencies" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-3 mb-12">
+                <h2 class="text-xs font-mono font-bold tracking-widest text-apple-blue uppercase">Engineering Stack</h2>
+                <p class="text-3xl font-extrabold text-white tracking-tight sm:text-4xl">Platform Expertise & Tooling</p>
+                <p class="text-gray-400 max-w-2xl mx-auto text-sm">Specialized capabilities across modern Apple enterprise architecture, automated device enrollment, and high-density education deployments.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Skill 1 -->
+                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-apple-blue/10 border border-apple-blue/20 flex items-center justify-center text-apple-blue">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Apple MDM & Architecture</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Jamf Pro & Jamf School deployment, Declarative Device Management (DDM), Automated Device Enrollment (ADE/DEP), and Custom Mobileconfig profiles.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-apple-border flex flex-wrap gap-1.5">
+                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-300">Jamf Pro</span>
+                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-300">DDM</span>
+                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-300">ASM</span>
+                    </div>
+                </div>
+
+                <!-- Skill 2 -->
+                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-apple-green/10 border border-apple-green/20 flex items-center justify-center text-apple-green">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Shell & Python Automation</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Custom Zsh/Bash CLI tools, automated maintenance jobs, Jamf API integration scripts, extension attributes, and scheduled daemon tasks.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-apple-border flex flex-wrap gap-1.5">
+                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-300">Zsh / Bash</span>
+                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-300">Python 3</span>
+                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-300">REST APIs</span>
+                    </div>
+                </div>
+
+                <!-- Skill 3 -->
+                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-apple-purple/10 border border-apple-purple/20 flex items-center justify-center text-apple-purple">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Packaging & Patch Management</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            AutoPkg pipelines with Git automation, Installomator, custom PKG creation via Luggage/Pkgbuild, and macOS software lifecycle management.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-apple-border flex flex-wrap gap-1.5">
+                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-300">AutoPkg</span>
+                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-300">Installomator</span>
+                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-300">Pkgbuild</span>
+                    </div>
+                </div>
+
+                <!-- Skill 4 -->
+                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-apple-orange/10 border border-apple-orange/20 flex items-center justify-center text-apple-orange">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Identity & Compliance Security</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            FileVault key escrow, Nudge macOS update enforcement, Jamf Connect / Identity Provider integration (Okta, Entra ID), and CIS Benchmark hardening.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-apple-border flex flex-wrap gap-1.5">
+                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-300">FileVault</span>
+                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-300">Nudge</span>
+                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-300">Entra ID</span>
+                    </div>
+                </div>
+
+                <!-- Skill 5 -->
+                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-apple-blue/10 border border-apple-blue/20 flex items-center justify-center text-apple-blue">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Education & K-12 Fleet Ops</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Shared iPad for Education deployment, Apple School Manager (ASM) roster syncing, Apple Classroom config, and lab Mac mass-provisioning.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-apple-border flex flex-wrap gap-1.5">
+                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-300">Apple School Mgr</span>
+                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-300">Shared iPad</span>
+                    </div>
+                </div>
+
+                <!-- Skill 6 -->
+                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-apple-red/10 border border-apple-red/20 flex items-center justify-center text-apple-red">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Custom GUI & User Onboarding</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Rich, custom user enrollment dialogs built with SwiftDialog, swift-based helpers, and customized macOS Setup Assistant onboarding workflows.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-apple-border flex flex-wrap gap-1.5">
+                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-300">SwiftDialog</span>
+                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-300">Swift</span>
+                        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-300">User Experience</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Terminal Sandbox Section -->
+        <section id="sandbox" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-panel rounded-3xl border border-apple-border p-6 sm:p-8 relative overflow-hidden">
+                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-apple-border">
+                    <div>
+                        <div class="inline-flex items-center gap-2 text-xs font-mono text-apple-blue font-bold uppercase tracking-wider mb-2">
+                            <span class="w-2 h-2 rounded-full bg-apple-blue animate-ping"></span>
+                            Live Script Playground
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Interactive CLI & Automation Sandbox</h2>
+                        <p class="text-gray-400 text-sm mt-1">Select a script scenario below to execute real-world Zsh and Python platform engineering tasks in real-time.</p>
+                    </div>
+
+                    <!-- Sandbox Script Selector Buttons -->
+                    <div class="flex flex-wrap gap-2" id="scriptSelector">
+                        <button onclick="runSandboxScript('jamf-api')" class="sandbox-btn px-3 py-2 rounded-xl text-xs font-mono font-medium transition-all bg-apple-blue text-white shadow-lg">
+                            1. jamf_bearer_token.py
+                        </button>
+                        <button onclick="runSandboxScript('swiftdialog')" class="sandbox-btn px-3 py-2 rounded-xl text-xs font-mono font-medium transition-all bg-white/5 hover:bg-white/10 text-gray-300 border border-white/10">
+                            2. setup_dialog.sh
+                        </button>
+                        <button onclick="runSandboxScript('autopkg')" class="sandbox-btn px-3 py-2 rounded-xl text-xs font-mono font-medium transition-all bg-white/5 hover:bg-white/10 text-gray-300 border border-white/10">
+                            3. run_autopkg_pipeline.sh
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Sandbox Layout: Code View + Execution Console -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-6">
+                    <!-- Left: Code Snippet Preview -->
+                    <div class="lg:col-span-6 bg-black/50 rounded-2xl border border-apple-border overflow-hidden">
+                        <div class="bg-white/5 px-4 py-2 border-b border-apple-border flex items-center justify-between">
+                            <span id="sandboxCodeTitle" class="text-xs font-mono text-gray-300">jamf_bearer_token.py</span>
+                            <span class="text-[10px] font-mono text-apple-green">Read-Only Script View</span>
+                        </div>
+                        <pre class="p-4 font-mono text-xs text-gray-300 overflow-x-auto h-72 custom-scrollbar"><code id="sandboxCodeDisplay">import requests
+import json
+
+# Authenticate with Jamf Pro API & Obtain Bearer Token
+JAMF_URL = "https://school-fleet.jamfcloud.com"
+CLIENT_ID = "pkar-01-api-client"
+
+def get_bearer_token():
+    url = f"{JAMF_URL}/api/oauth/token"
+    payload = {'client_id': CLIENT_ID, 'grant_type': 'client_credentials'}
+    response = requests.post(url, data=payload)
+    if response.status_code == 200:
+        token = response.json().get('access_token')
+        print(f"[+] Successfully authenticated with Jamf Pro API!")
+        return token
+    else:
+        print(f"[-] Authentication failed: {response.status_code}")
+
+get_bearer_token()</code></pre>
+                    </div>
+
+                    <!-- Right: Execution Output Terminal -->
+                    <div class="lg:col-span-6 bg-black/80 rounded-2xl border border-apple-border overflow-hidden flex flex-col justify-between">
+                        <div>
+                            <div class="bg-black/60 px-4 py-2 border-b border-apple-border flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-apple-green"></span>
+                                    <span class="text-xs font-mono text-gray-300">Execution Console</span>
+                                </div>
+                                <button onclick="clearConsole()" class="text-[10px] font-mono text-gray-400 hover:text-white underline">Clear</button>
+                            </div>
+                            <div id="sandboxConsole" class="p-4 font-mono text-xs space-y-1.5 h-60 custom-scrollbar overflow-y-auto text-gray-300">
+                                <div class="text-gray-500">// Terminal ready. Click a script scenario above or click 'Run Script' below.</div>
+                            </div>
+                        </div>
+
+                        <!-- Action Bar -->
+                        <div class="p-3 bg-white/5 border-t border-apple-border flex items-center justify-between">
+                            <div class="text-[11px] font-mono text-gray-400">Environment: macOS Sonoma 14.5 (Darwin 23.5)</div>
+                            <button id="runScriptBtn" onclick="executeCurrentScript()" class="px-4 py-1.5 rounded-lg bg-apple-green hover:bg-green-600 text-black font-mono text-xs font-bold transition-all flex items-center gap-1.5 shadow-md">
+                                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Projects Showcase -->
+        <section id="projects" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+                <div>
+                    <h2 class="text-xs font-mono font-bold tracking-widest text-apple-purple uppercase">Open Source & Enterprise Tooling</h2>
+                    <p class="text-3xl font-extrabold text-white tracking-tight sm:text-4xl mt-1">Featured Projects</p>
+                </div>
+                <p class="text-gray-400 text-sm max-w-md">Real production solutions built for Apple platform automation, API integration, and user onboarding.</p>
+            </div>
+
+            <!-- Project Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="glass-card rounded-2xl overflow-hidden flex flex-col justify-between group">
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono text-apple-blue font-semibold px-2.5 py-1 rounded-full bg-apple-blue/10 border border-apple-blue/20">Python / Jamf API</span>
+                            <span class="text-xs font-mono text-gray-400">GitHub: pkar-01</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white group-hover:text-apple-blue transition-colors">Jamf Pro API Automation Suite</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Modular Python toolkit for bulk-managing computer extension attributes, renewing ASM tokens, generating fleet compliance reports, and syncing OAuth bearer tokens.
+                        </p>
+                    </div>
+                    <div class="p-6 pt-0 border-t border-apple-border/50 mt-4 flex items-center justify-between">
+                        <button onclick="openProjectModal('jamf-suite')" class="text-xs font-mono font-semibold text-white hover:text-apple-blue transition-colors flex items-center gap-1">
+                            Read Architecture &rarr;
+                        </button>
+                        <a href="https://github.com/pkar-01" target="_blank" rel="noopener" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="glass-card rounded-2xl overflow-hidden flex flex-col justify-between group">
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono text-apple-green font-semibold px-2.5 py-1 rounded-full bg-apple-green/10 border border-apple-green/20">SwiftDialog / Zsh</span>
+                            <span class="text-xs font-mono text-gray-400">Production Ready</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white group-hover:text-apple-green transition-colors">SwiftDialog Enrollment Experience</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            A polished, user-friendly Mac onboarding workflow triggering dynamically during Jamf enrollment with progress bars, app installations, and identity setup.
+                        </p>
+                    </div>
+                    <div class="p-6 pt-0 border-t border-apple-border/50 mt-4 flex items-center justify-between">
+                        <button onclick="openProjectModal('swiftdialog-suite')" class="text-xs font-mono font-semibold text-white hover:text-apple-green transition-colors flex items-center gap-1">
+                            Read Architecture &rarr;
+                        </button>
+                        <a href="https://github.com/pkar-01" target="_blank" rel="noopener" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="glass-card rounded-2xl overflow-hidden flex flex-col justify-between group">
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono text-apple-purple font-semibold px-2.5 py-1 rounded-full bg-apple-purple/10 border border-apple-purple/20">AutoPkg / CI Pipeline</span>
+                            <span class="text-xs font-mono text-gray-400">CI/CD</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white group-hover:text-apple-purple transition-colors">Automated App Patching Pipeline</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Continuous integration pipeline running AutoPkg to check, download, package, and upload latest software releases directly into Jamf Pro distribution points.
+                        </p>
+                    </div>
+                    <div class="p-6 pt-0 border-t border-apple-border/50 mt-4 flex items-center justify-between">
+                        <button onclick="openProjectModal('autopkg-suite')" class="text-xs font-mono font-semibold text-white hover:text-apple-purple transition-colors flex items-center gap-1">
+                            Read Architecture &rarr;
+                        </button>
+                        <a href="https://github.com/pkar-01" target="_blank" rel="noopener" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TIL / Engineering Notes Section -->
+        <section id="til" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-panel rounded-3xl p-8 border border-apple-border">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+                    <div>
+                        <div class="inline-flex items-center gap-2 text-xs font-mono text-apple-green font-bold uppercase tracking-wider mb-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                            Knowledge Base & Field Notes
+                        </div>
+                        <h2 class="text-3xl font-extrabold text-white">TIL (Today I Learned) & Script Vault</h2>
+                    </div>
+                    <span class="text-xs font-mono text-gray-400">Updated for macOS Sonoma & Sequoia</span>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Note 1 -->
+                    <details class="group border border-apple-border rounded-xl p-4 bg-black/40 cursor-pointer transition-all hover:border-apple-blue/40">
+                        <summary class="flex items-center justify-between font-bold text-white text-base">
+                            <span class="flex items-center gap-3">
+                                <span class="text-apple-blue font-mono text-xs px-2 py-0.5 rounded bg-apple-blue/10">macOS</span>
+                                Handling Apple Silicon DDM Enforcements in Jamf Pro
+                            </span>
+                            <span class="text-gray-400 group-open:rotate-180 transition-transform">&darr;</span>
+                        </summary>
+                        <div class="mt-4 pt-4 border-t border-apple-border text-sm text-gray-300 space-y-2 leading-relaxed">
+                            <p>Declarative Device Management (DDM) allows macOS devices to autonomously process state logic without waiting for server polling cycles. When implementing software update declarations, ensure target Macs are running macOS 14.0+ and possess a valid bootstrap token escrowed in Jamf Pro.</p>
+                            <div class="p-3 bg-black/80 rounded-lg font-mono text-xs text-apple-green">
+                                $ sudo profiles status -type startupment
+                            </div>
+                        </div>
+                    </details>
+
+                    <!-- Note 2 -->
+                    <details class="group border border-apple-border rounded-xl p-4 bg-black/40 cursor-pointer transition-all hover:border-apple-blue/40">
+                        <summary class="flex items-center justify-between font-bold text-white text-base">
+                            <span class="flex items-center gap-3">
+                                <span class="text-apple-green font-mono text-xs px-2 py-0.5 rounded bg-apple-green/10">Zsh</span>
+                                Efficient Token Caching for Jamf Pro API Requests
+                            </span>
+                            <span class="text-gray-400 group-open:rotate-180 transition-transform">&darr;</span>
+                        </summary>
+                        <div class="mt-4 pt-4 border-t border-apple-border text-sm text-gray-300 space-y-2 leading-relaxed">
+                            <p>Repeatedly requesting OAuth tokens on every script invocation can trigger rate limiting on Jamf Pro Cloud instances. Cache the token in memory or `/tmp/` with an expiration timestamp check to optimize script throughput across large fleet automated tasks.</p>
+                        </div>
+                    </details>
+
+                    <!-- Note 3 -->
+                    <details class="group border border-apple-border rounded-xl p-4 bg-black/40 cursor-pointer transition-all hover:border-apple-blue/40">
+                        <summary class="flex items-center justify-between font-bold text-white text-base">
+                            <span class="flex items-center gap-3">
+                                <span class="text-apple-purple font-mono text-xs px-2 py-0.5 rounded bg-apple-purple/10">ASM</span>
+                                Apple School Manager Class Sync Troubleshooting
+                            </span>
+                            <span class="text-gray-400 group-open:rotate-180 transition-transform">&darr;</span>
+                        </summary>
+                        <div class="mt-4 pt-4 border-t border-apple-border text-sm text-gray-300 space-y-2 leading-relaxed">
+                            <p>If rostered classes fail to populate in Apple Classroom on iPad devices, check for missing Managed Apple IDs or stale token trust relationships between ASM and Jamf School/Pro. Token renewals should be scheduled 30 days prior to annual expiration.</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-xs font-mono font-bold text-apple-green uppercase tracking-widest">Connect</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Let's build reliable platform automation.</h2>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Interested in collaborating on Jamf Pro architecture, custom macOS tooling, or educational IT deployments in Sydney or remotely? Reach out below!
+                    </p>
+
+                    <div class="space-y-3 pt-2">
+                        <!-- Copyable Handle Item -->
+                        <div class="flex items-center justify-between p-3.5 rounded-xl glass-panel border border-apple-border">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-apple-blue/10 flex items-center justify-center text-apple-blue">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                                </div>
+                                <span class="text-xs font-mono text-gray-200">thescriptingtree@gmail.com</span>
+                            </div>
+                            <button onclick="copyToClipboard('thescriptingtree@gmail.com', this)" class="text-xs font-mono text-apple-blue hover:underline">Copy</button>
+                        </div>
+
+                        <div class="flex items-center justify-between p-3.5 rounded-xl glass-panel border border-apple-border">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-white">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                                </div>
+                                <span class="text-xs font-mono text-gray-200">github.com/pkar-01</span>
+                            </div>
+                            <a href="https://github.com/pkar-01" target="_blank" rel="noopener" class="text-xs font-mono text-apple-blue hover:underline">Visit</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Interactive Form -->
+                <div class="lg:col-span-7 glass-panel rounded-3xl p-6 sm:p-8 border border-apple-border">
+                    <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-mono text-gray-400 mb-1">Your Name</label>
+                                <input type="text" required placeholder="John Doe" class="w-full px-4 py-3 rounded-xl bg-black/50 border border-apple-border text-white text-sm focus:border-apple-blue focus:outline-none transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-mono text-gray-400 mb-1">Email Address</label>
+                                <input type="email" required placeholder="john@example.com" class="w-full px-4 py-3 rounded-xl bg-black/50 border border-apple-border text-white text-sm focus:border-apple-blue focus:outline-none transition-colors">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-mono text-gray-400 mb-1">Topic / Environment</label>
+                            <select class="w-full px-4 py-3 rounded-xl bg-black/50 border border-apple-border text-white text-sm focus:border-apple-blue focus:outline-none transition-colors">
+                                <option>Jamf Pro & Apple Architecture</option>
+                                <option>macOS Automation & Tooling</option>
+                                <option>School / K-12 Infrastructure</option>
+                                <option>General Inquiry</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-mono text-gray-400 mb-1">Message</label>
+                            <textarea rows="4" required placeholder="Details about your inquiry..." class="w-full px-4 py-3 rounded-xl bg-black/50 border border-apple-border text-white text-sm focus:border-apple-blue focus:outline-none transition-colors"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-apple-blue to-apple-purple text-white font-bold text-sm hover:opacity-90 transition-opacity glow-blue">
+                            Send Message
+                        </button>
+                    </form>
+
+                    <!-- Form Success Banner -->
+                    <div id="formSuccess" class="hidden p-4 rounded-xl bg-apple-green/10 border border-apple-green/30 text-center space-y-1 mt-4">
+                        <p class="font-bold text-apple-green text-sm">Message Transmitted!</p>
+                        <p class="text-xs text-gray-300">Thanks for reaching out. I'll get back to you shortly.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Project Architecture Modal -->
+    <div id="projectModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="glass-panel max-w-2xl w-full rounded-3xl border border-apple-border p-6 sm:p-8 relative space-y-6">
+            <button onclick="closeProjectModal()" class="absolute top-6 right-6 text-gray-400 hover:text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <div id="modalContent">
+                <!-- Dynamically populated via JavaScript -->
+            </div>
+        </div>
     </div>
 
-  </section>
-
-
-  <!-- =======================================================
-       TOOLBOX
-       ======================================================= -->
-
-  <section id="skills">
-
-    <div class="container">
-
-      <div class="section-label">
-        06 / Toolbox
-      </div>
-
-
-      <h2 class="section-title">
-        The technology I work with.
-      </h2>
-
-
-      <p class="section-intro">
-
-        A selection of platforms, tools and technologies
-        that make up my systems engineering toolkit.
-
-      </p>
-
-
-      <div class="skills">
-
-        <span class="skill">APPLE</span>
-
-        <span class="skill">MACOS</span>
-
-        <span class="skill">IPADOS</span>
-
-        <span class="skill">JAMF PRO</span>
-
-        <span class="skill">APPLE SCHOOL MANAGER</span>
-
-        <span class="skill">APPLE BUSINESS MANAGER</span>
-
-        <span class="skill">BASH</span>
-
-        <span class="skill">ZSH</span>
-
-        <span class="skill">PYTHON</span>
-
-        <span class="skill">APPLESCRIPT</span>
-
-        <span class="skill">JAMF API</span>
-
-        <span class="skill">REST API</span>
-
-        <span class="skill">GIT</span>
-
-        <span class="skill">GITHUB</span>
-
-        <span class="skill">NETWORKING</span>
-
-        <span class="skill">DNS</span>
-
-        <span class="skill">DHCP</span>
-
-        <span class="skill">WI-FI</span>
-
-        <span class="skill">CYBERSECURITY</span>
-
-        <span class="skill">IDENTITY</span>
-
-        <span class="skill">AUTOMATION</span>
-
-        <span class="skill">MDM</span>
-
-        <span class="skill">DEPLOYMENT</span>
-
-        <span class="skill">EDTECH</span>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =======================================================
-       IMPACT
-       ======================================================= -->
-
-  <section>
-
-    <div class="container">
-
-      <div class="section-label">
-        07 / Impact
-      </div>
-
-
-      <h2 class="section-title">
-        Technology at scale.
-      </h2>
-
-
-      <p class="section-intro">
-
-        Replace these example numbers with real metrics
-        from your own environment.
-
-      </p>
-
-
-      <div class="impact">
-
-
-        <div class="card stat">
-
-          <div class="stat-number">
-            1,000+
-          </div>
-
-          <div class="stat-label">
-            Apple Devices
-          </div>
-
+    <!-- Footer -->
+    <footer class="border-t border-apple-border bg-black/60 py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-gray-400">
+            <div class="flex items-center space-x-2">
+                <span>&copy; 2026 TheScriptingTree (pkar-01)</span>
+                <span>•</span>
+                <span>Sydney, Australia</span>
+            </div>
+            <div>
+                Hosted on <span class="text-white font-semibold">GitHub Pages</span> | Domain via <span class="text-white font-semibold">Wix</span>
+            </div>
         </div>
+    </footer>
 
+    <!-- JavaScript Logic -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
 
-        <div class="card stat">
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
 
-          <div class="stat-number">
-            99.9%
-          </div>
+        // Interactive Sandbox State & Scripts Data
+        const sandboxScripts = {
+            'jamf-api': {
+                title: 'jamf_bearer_token.py',
+                code: `import requests\nimport json\n\n# Authenticate with Jamf Pro API & Obtain Bearer Token\nJAMF_URL = "https://school-fleet.jamfcloud.com"\nCLIENT_ID = "pkar-01-api-client"\n\ndef get_bearer_token():\n    url = f"{JAMF_URL}/api/oauth/token"\n    payload = {'client_id': CLIENT_ID, 'grant_type': 'client_credentials'}\n    response = requests.post(url, data=payload)\n    if response.status_code == 200:\n        token = response.json().get('access_token')\n        print(f"[+] Successfully authenticated with Jamf Pro API!")\n        return token\n    else:\n        print(f"[-] Authentication failed: {response.status_code}")\n\nget_bearer_token()`,
+                logs: [
+                    '<span class="text-gray-400">[1/3] Initiating OAuth2 token request to Jamf Cloud...</span>',
+                    '<span class="text-apple-blue">[2/3] Validating Client Credentials for user pkar-01...</span>',
+                    '<span class="text-apple-green">[3/3] [SUCCESS] Bearer Token Issued (Valid for 1800s): eyJhbGciOiJSUzI1NiJ9...</span>',
+                    '<span class="text-gray-300">[INFO] Active Session bound to Sydney datacenter endpoint.</span>'
+                ]
+            },
+            'swiftdialog': {
+                title: 'setup_dialog.sh',
+                code: `#!/bin/zsh\n# Trigger SwiftDialog Onboarding Interface during Jamf Enrollment\n\nDIALOG_APP="/usr/local/bin/dialog"\nTITLE="Welcome to Sydney School District"\nICON="/Library/Application Support/JAMF/bin/branding.png"\n\n$DIALOG_APP --title "$TITLE" \\\n  --message "Configuring your Apple Silicon Mac for secure enterprise access..." \\\n  --icon "$ICON" \\\n  --progress 100 \\\n  --progresstext "Installing Essential Apps & Profiles..."`,
+                logs: [
+                    '<span class="text-apple-orange">[Dialog] Launching SwiftDialog GUI helper v2.5.2...</span>',
+                    '<span class="text-gray-300">[Install] Executing Installomator for Microsoft Teams & Google Chrome...</span>',
+                    '<span class="text-gray-300">[Profile] Verifying FileVault Key Escrow in Jamf Pro...</span>',
+                    '<span class="text-apple-green">[Complete] User Provisioning Dialog closed gracefully (Exit 0).</span>'
+                ]
+            },
+            'autopkg': {
+                title: 'run_autopkg_pipeline.sh',
+                code: `#!/bin/zsh\n# AutoPkg Automated Software Packaging & Jamf Distribution Sync\n\nRECIPES=("GoogleChrome.jamf" "BBEdit.jamf" "Zoom.jamf")\n\nfor recipe in "\${RECIPES[@]}"; do\n    echo "[+] Running recipe: $recipe"\n    autopkg run "$recipe" --post "com.github.grahampugh.jamf-upload.processors/JamfCategoryUploader"\ndone`,
+                logs: [
+                    '<span class="text-apple-purple">[AutoPkg] Checking recipe trust info for GoogleChrome.jamf...</span>',
+                    '<span class="text-gray-300">[Download] Found new release v125.0.6422.112 (Universal PKG).</span>',
+                    '<span class="text-gray-300">[Package] Building deployment installer via Pkgbuild...</span>',
+                    '<span class="text-apple-green">[Jamf Upload] PKG uploaded to Jamf Cloud Distribution Point successfully!</span>'
+                ]
+            }
+        };
 
-          <div class="stat-label">
-            Target Reliability
-          </div>
+        let currentScriptKey = 'jamf-api';
 
-        </div>
+        function runSandboxScript(key) {
+            currentScriptKey = key;
+            const script = sandboxScripts[key];
+            
+            // Update Code view
+            document.getElementById('sandboxCodeTitle').textContent = script.title;
+            document.getElementById('sandboxCodeDisplay').textContent = script.code;
 
+            // Update tab button UI styles
+            const buttons = document.querySelectorAll('.sandbox-btn');
+            buttons.forEach((btn, index) => {
+                const isSelected = (key === 'jamf-api' && index === 0) || 
+                                   (key === 'swiftdialog' && index === 1) || 
+                                   (key === 'autopkg' && index === 2);
+                if (isSelected) {
+                    btn.className = 'sandbox-btn px-3 py-2 rounded-xl text-xs font-mono font-medium transition-all bg-apple-blue text-white shadow-lg';
+                } else {
+                    btn.className = 'sandbox-btn px-3 py-2 rounded-xl text-xs font-mono font-medium transition-all bg-white/5 hover:bg-white/10 text-gray-300 border border-white/10';
+                }
+            });
 
-        <div class="card stat">
+            executeCurrentScript();
+        }
 
-          <div class="stat-number">
-            24/7
-          </div>
+        function executeCurrentScript() {
+            const consoleEl = document.getElementById('sandboxConsole');
+            consoleEl.innerHTML = `<div class="text-apple-blue">// Executing ${sandboxScripts[currentScriptKey].title}...</div>`;
 
-          <div class="stat-label">
-            Systems
-          </div>
+            const logs = sandboxScripts[currentScriptKey].logs;
+            logs.forEach((log, idx) => {
+                setTimeout(() => {
+                    const line = document.createElement('div');
+                    line.innerHTML = log;
+                    consoleEl.appendChild(line);
+                    consoleEl.scrollTop = consoleEl.scrollHeight;
+                }, (idx + 1) * 350);
+            });
+        }
 
-        </div>
+        function clearConsole() {
+            document.getElementById('sandboxConsole').innerHTML = `<div class="text-gray-500">// Console cleared. Select or run a script.</div>`;
+        }
 
+        // Project Modal Architecture Viewer
+        const projectDetails = {
+            'jamf-suite': {
+                title: 'Jamf Pro API Automation Suite',
+                tag: 'Python 3 / REST API Architecture',
+                body: `
+                    <p class="text-sm text-gray-300 leading-relaxed">This Python automation framework is designed to bridge the gap between Jamf Pro Cloud APIs and local IT workflows.</p>
+                    <div class="p-4 bg-black/60 rounded-xl border border-apple-border font-mono text-xs text-gray-300 space-y-2">
+                        <div class="text-apple-blue font-bold">Key Architectural Features:</div>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>OAuth 2.0 Bearer token caching & automatic renewal.</li>
+                            <li>Multi-threaded batch processing for high-density fleets (2,000+ endpoints).</li>
+                            <li>Automated error retries with exponential backoff on HTTP 429 rate limits.</li>
+                        </ul>
+                    </div>
+                `
+            },
+            'swiftdialog-suite': {
+                title: 'SwiftDialog Onboarding Experience',
+                tag: 'macOS Zero Touch Enrollment',
+                body: `
+                    <p class="text-sm text-gray-300 leading-relaxed">Replaces legacy, generic enrollment popups with a polished native macOS setup screen during Automated Device Enrollment (ADE).</p>
+                    <div class="p-4 bg-black/60 rounded-xl border border-apple-border font-mono text-xs text-gray-300 space-y-2">
+                        <div class="text-apple-green font-bold">Key Architectural Features:</div>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Real-time progress updates parsing Jamf log outputs.</li>
+                            <li>Dynamic branding customization per department or school campus.</li>
+                            <li>Automated fallback mechanisms if user network drops mid-provisioning.</li>
+                        </ul>
+                    </div>
+                `
+            },
+            'autopkg-suite': {
+                title: 'Automated App Patching Pipeline',
+                tag: 'AutoPkg / Jamf Upload / CI',
+                body: `
+                    <p class="text-sm text-gray-300 leading-relaxed">Continuous delivery pipeline for third-party macOS application installers, keeping end-user software patched effortlessly.</p>
+                    <div class="p-4 bg-black/60 rounded-xl border border-apple-border font-mono text-xs text-gray-300 space-y-2">
+                        <div class="text-apple-purple font-bold">Key Architectural Features:</div>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Automated recipe execution via scheduled GitHub Actions runner.</li>
+                            <li>PKG signature verification and SHA-256 hash validation.</li>
+                            <li>Direct integration with Jamf Pro Smart Groups for targeted patch policies.</li>
+                        </ul>
+                    </div>
+                `
+            }
+        };
 
-        <div class="card stat">
+        function openProjectModal(id) {
+            const detail = projectDetails[id];
+            if (!detail) return;
 
-          <div class="stat-number">
-            ∞
-          </div>
+            document.getElementById('modalContent').innerHTML = `
+                <div class="space-y-4">
+                    <span class="text-xs font-mono font-bold text-apple-blue px-2.5 py-1 rounded-full bg-apple-blue/10 border border-apple-blue/20">${detail.tag}</span>
+                    <h3 class="text-2xl font-bold text-white">${detail.title}</h3>
+                    ${detail.body}
+                    <div class="pt-4 flex items-center justify-end">
+                        <a href="https://github.com/pkar-01" target="_blank" rel="noopener" class="px-5 py-2.5 rounded-xl bg-apple-blue hover:bg-blue-600 text-white font-semibold text-xs transition-colors flex items-center gap-2">
+                            View Repos on GitHub &rarr;
+                        </a>
+                    </div>
+                </div>
+            `;
+            document.getElementById('projectModal').classList.remove('hidden');
+        }
 
-          <div class="stat-label">
-            Scripts Written
-          </div>
+        function closeProjectModal() {
+            document.getElementById('projectModal').classList.add('hidden');
+        }
 
-        </div>
+        // Copy to clipboard helper
+        function copyToClipboard(text, btn) {
+            document.execCommand('copy');
+            const originalText = btn.textContent;
+            btn.textContent = 'Copied!';
+            btn.classList.add('text-apple-green');
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.classList.remove('text-apple-green');
+            }, 2000);
+        }
 
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =======================================================
-       CONTACT
-       ======================================================= -->
-
-  <section id="contact">
-
-    <div class="container">
-
-      <div class="contact">
-
-        <div class="section-label">
-          08 / Contact
-        </div>
-
-
-        <h2 class="section-title">
-          Let's grow something.
-        </h2>
-
-
-        <p class="section-intro">
-
-          Interested in Apple technology, education,
-          automation or solving interesting systems problems?
-
-          I'm always happy to connect with other people
-          working in the space.
-
-        </p>
-
-
-        <!-- CHANGE YOUR EMAIL -->
-
-        <a
-          href="mailto:your.email@example.com"
-          class="contact-email"
-        >
-          your.email@example.com
-        </a>
-
-
-        <div
-          class="buttons"
-          style="justify-content:center;"
-        >
-
-          <!-- CHANGE TO YOUR GITHUB -->
-
-          <a
-            href="https://github.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="button button-primary"
-          >
-            GitHub ↗
-          </a>
-
-
-          <!-- CHANGE TO YOUR LINKEDIN -->
-
-          <a
-            href="https://www.linkedin.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="button button-secondary"
-          >
-            LinkedIn ↗
-          </a>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =======================================================
-       FOOTER
-       ======================================================= -->
-
-  <footer>
-
-    <div class="container">
-
-      <span>
-        © 2026 TheScriptingTree
-      </span>
-
-      <span class="footer-tree">
-        🌱 Apple Systems · Automation · Education
-      </span>
-
-    </div>
-
-  </footer>
-
-
+        // Form Submit Handler
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            document.getElementById('contactForm').reset();
+            document.getElementById('formSuccess').classList.remove('hidden');
+            setTimeout(() => {
+                document.getElementById('formSuccess').classList.add('hidden');
+            }, 5000);
+        }
+    </script>
 </body>
 </html>
